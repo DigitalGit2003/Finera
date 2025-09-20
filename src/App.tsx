@@ -12,6 +12,9 @@ import EngageModel from "./pages/EngageModel";
 import Workflow from "./pages/Workflow";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import AccountingBookkeeping from "./pages/services/AccountingBookkeeping";
+import FinalizationAccounts from "./pages/services/FinalizationAccounts";
+// import AccountsReceivable from "./pages/services/AccountsReceivable";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +31,9 @@ const App = () => (
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/services/accounting-bookkeeping" element={<AccountingBookkeeping />} />
+              <Route path="/services/finalization-accounts" element={<FinalizationAccounts />} />
+              {/* <Route path="/services/accounts-receivable" element={<AccountsReceivable />} /> */}
               <Route path="/engage-model" element={<EngageModel />} />
               <Route path="/workflow" element={<Workflow />} />
               <Route path="/contact" element={<Contact />} />
