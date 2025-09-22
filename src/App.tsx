@@ -13,7 +13,10 @@ import Workflow from "./pages/Workflow";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import AccountingBookkeeping from "./pages/services/AccountingBookkeeping";
-import FinalizationAccounts from "./pages/services/FinalizationAccounts";
+import ManagementAccounting from "./pages/services/ManagementAccounting";
+import PayrollManagement from "./pages/services/PayrollManagement";
+import VATReturn from "./pages/services/VATReturn";
+import YearEndAccounting from "./pages/services/YearEndAccounting";
 // import AccountsReceivable from "./pages/services/AccountsReceivable";
 
 const queryClient = new QueryClient();
@@ -32,7 +35,10 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/services/accounting-bookkeeping" element={<AccountingBookkeeping />} />
-              <Route path="/services/finalization-accounts" element={<FinalizationAccounts />} />
+              <Route path="/services/management-accounting" element={<ManagementAccounting />} />
+              <Route path="/services/payroll-management" element={<PayrollManagement />} />
+              <Route path="/services/VAT-return" element={<VATReturn />} />
+              <Route path="/services/year-end-accounting" element={<YearEndAccounting />} />
               {/* <Route path="/services/accounts-receivable" element={<AccountsReceivable />} /> */}
               <Route path="/engage-model" element={<EngageModel />} />
               <Route path="/workflow" element={<Workflow />} />

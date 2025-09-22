@@ -17,309 +17,512 @@ import {
   CreditCard,
   Calendar,
   Building2,
-  Play
+  Play,
+  Star,
+  Award
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion, useAnimation } from 'framer-motion';
+import { useRef, useEffect } from 'react';
+
+function AnimatedServiceSection({ imageSrc, imageAlt, imageBadge, imageBadgeClass, borderClass, title, children }) {
+  const ref = useRef(null);
+  const controls = useAnimation();
+  
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          controls.start('visible');
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [controls]);
+
+  return (
+    <div ref={ref} className="mb-24">
+      <div className="relative">
+        <motion.div
+          className="absolute -top-8 -left-4 z-10"
+          initial={{ scale: 0.7, opacity: 0 }}
+          animate={controls}
+          variants={{ visible: { scale: 1, opacity: 1, transition: { duration: 0.7, type: 'spring' } } }}
+        >
+          <div className="relative">
+            <img 
+              src={imageSrc}
+              alt={imageAlt}
+              className="w-[300px] h-[320px] object-cover rounded-2xl shadow-lg border-4 border-white"
+            />
+            <div className={`absolute top-4 right-4 text-white px-3 py-2 rounded-lg text-sm font-semibold shadow-md ${imageBadgeClass}`}>
+              {imageBadge}
+            </div>
+          </div>
+        </motion.div>
+        <motion.div
+          className="ml-64 pt-32"
+          initial={{ y: 80, opacity: 0 }}
+          animate={controls}
+          variants={{ visible: { y: 0, opacity: 1, transition: { duration: 0.7, type: 'spring' } } }}
+        >
+          <div className={`border-2 border-dashed rounded-2xl p-12 bg-white shadow-lg hover:shadow-xl transition-all duration-300 ${borderClass}`}>
+            <div className="px-4 py-2">
+              <h2 className="text-4xl font-bold mb-8 text-gray-900 leading-tight">{title}</h2>
+              {children}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+function ServiceOverviewCard({ icon: Icon, title, description, color }) {
+  return (
+    <motion.div
+      whileHover={{ y: -6, scale: 1.02 }}
+      transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+      className="group h-full"
+    >
+      <Card className="h-full border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white relative overflow-hidden">
+        <div className={`absolute top-0 left-0 right-0 h-1 ${color}`}></div>
+        <CardHeader className="pb-4 pt-8 px-6">
+          <div className={`w-14 h-14 rounded-xl ${color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
+            <Icon className="text-white" size={26} />
+          </div>
+          <CardTitle className="text-lg font-bold text-gray-900 mb-3 leading-snug group-hover:text-gray-700 transition-colors">
+            {title}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="px-6 pb-6">
+          <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
 
 const Services = () => {
-  const heroStats = [
-    { number: "100+", label: "Clients Served" },
-    { number: "100000+", label: "Invoices Processed Per Month" },
-    { number: "500+", label: "Completed Projects" },
-    { number: "1000000+", label: "Reconciliation in a Month" },
-    { number: "150+", label: "Team Size" }
-  ];
-
-  const mainServices = [
+  const servicesOverview = [
     {
-      icon: <Receipt className="h-16 w-16 text-accent" />,
-      title: "Accounts Reconciliation",
-      description: "Say goodbye to errors with our expert team by your side. We proactively resolve discrepancies, ensuring your financial records are always accurate and reliable.",
-      link: "/services/accounts-reconciliation"
+      icon: Calculator,
+      title: "Accounting & Bookkeeping",
+      description: "Routine accounting, bookkeeping, reconciliations, and ledger management for businesses and firms.",
+      color: "bg-gradient-to-br from-blue-500 to-blue-600"
     },
     {
-      icon: <CreditCard className="h-16 w-16 text-accent" />,
-      title: "Accounts Payable",
-      description: "Outsource accounts payable for smoother operations. Our services offer managing vendor payments, reducing errors and maintaining financial stability. Make AP a cornerstone of your success.",
-      link: "/services/accounts-payable"
+      icon: PieChart,
+      title: "Management Accounting",
+      description: "Insightful management reports, KPIs, and cash flow analysis to drive strategic decisions.",
+      color: "bg-gradient-to-br from-emerald-500 to-emerald-600"
     },
     {
-      icon: <Receipt className="h-16 w-16 text-accent" />,
-      title: "Accounts Receivable",
-      description: "Transform receivables into a growth engine. Hire us to automate invoicing and monitor collections, which will ultimately improve cash flow. We prioritize timely payment processing.",
-      link: "/services/accounts-receivable"
+      icon: Calendar,
+      title: "Year-End Accounting",
+      description: "Compliant year-end accounts, tax computations, and HMRC submissions for UK businesses.",
+      color: "bg-gradient-to-br from-amber-500 to-amber-600"
     },
     {
-      icon: <FileBarChart className="h-16 w-16 text-accent" />,
-      title: "Financial Reporting",
-      description: "Gain clarity with customized reports crafted to inform strategic decisions. Our insights help you navigate challenges and seize growth opportunities.",
-      link: "/services/financial-reporting"
+      icon: Receipt,
+      title: "VAT Return",
+      description: "Accurate VAT calculations, returns, and compliance with Making Tax Digital (MTD) regulations.",
+      color: "bg-gradient-to-br from-indigo-500 to-indigo-600"
     },
     {
-      icon: <TrendingUp className="h-16 w-16 text-accent" />,
-      title: "Cash Flow Forecasting",
-      description: "Stay in control with precise cash flow forecasts tailored to your needs. Our solutions ensure financial stability and efficiency at every step.",
-      link: "/services/cash-flow-forecasting"
-    }
-  ];
-
-  const processSteps = [
-    {
-      number: "1",
-      title: "Connect with Us",
-      description: "Understanding your accounting challenges and requirements."
-    },
-    {
-      number: "2", 
-      title: "Understand Deliverables",
-      description: "Comprehending your expectations and setting specific deliverables"
-    },
-    {
-      number: "3",
-      title: "Pricing", 
-      description: "We propose a fixed pricing plan based on your exact requirements."
-    },
-    {
-      number: "4",
-      title: "Plan of Action",
-      description: "Connect with our accountant to create customized plans and bring effective solutions."
-    },
-    {
-      number: "5",
-      title: "Kick Off",
-      description: "Once approved, it's time to put the plan into action."
-    }
-  ];
-
-  const whyChooseUs = [
-    {
-      icon: <Shield className="h-12 w-12 text-accent" />,
-      title: "Expertise You Can Trust",
-      description: "Our team is comprised of experienced professionals dedicated to accuracy and compliance."
-    },
-    {
-      icon: <TrendingUp className="h-12 w-12 text-accent" />,
-      title: "Tailored Solutions for Every Business",
-      description: "We customize our services to fit the unique needs of your business, ensuring optimal results."
-    },
-    {
-      icon: <Clock className="h-12 w-12 text-accent" />,
-      title: "Efficient, Hassle-Free Process",
-      description: "We have a simple plug and play model, we assign the accountants based on your needs, no long-term contracts."
-    },
-    {
-      icon: <Building2 className="h-12 w-12 text-accent" />,
-      title: "Cutting-Edge Technology",
-      description: "We know just the right tools to use to get those numbers accurately and on time."
-    },
-    {
-      icon: <DollarSign className="h-12 w-12 text-accent" />,
-      title: "Transparent and Flexible Pricing",
-      description: "We offer upfront fixed pricing options that suit your budget without any hidden fees."
-    }
-  ];
-
-  const technologyPartners = [
-    { name: "NetSuite", description: "Boost Your Growth with NetSuite Accounting Excellence." },
-    { name: "Xero", description: "Simplify Your Finances with Xero Accounting Service." },
-    { name: "Zoho Books", description: "Empower Your Business with Zoho Books." },
-    { name: "QuickBooks", description: "Maximize efficiency with QuickBooks Accounting Software." },
-    { name: "Business Central", description: "Financial Management Made Simple with Business Central" }
-  ];
-
-  const testimonials = [
-    {
-      quote: "Excellent work with invoicing automation and AP & AR processing. Highly recommended!",
-      author: "Aaron Attwell",
-      position: "Director"
-    },
-    {
-      quote: "Excellent team to work with. Great work. Will use their service again for sure.",
-      author: "Jon Kontopos", 
-      position: "Vice President"
-    },
-    {
-      quote: "Exceptionally understanding and competent team. A wonderful experience.",
-      author: "Andy Seth",
-      position: "CFO"
+      icon: Users,
+      title: "Payroll Management",
+      description: "End-to-end payroll processing, payslips, RTI filing, and pension management for your team.",
+      color: "bg-gradient-to-br from-teal-500 to-teal-600"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold mb-6 text-gray-900">
-              Accounting Outsourcing Services Built for Overseas Firms
-            </h1>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
-              Accounting doesn't have to be complicated—we make it simple. With a decade of experience, we understand the value of accurate books and timely reports for any business, big or small. As your trusted partner, we've spent over a decade helping businesses worldwide to stay on top of their finances.
-            </p>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
-              Learn More
-            </Button>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Overview Section */}
+        <section className="mb-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            <div className="space-y-6">
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight">
+                Our Services
+              </h1>
+              <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div className="max-w-4xl mx-auto space-y-5">
+              <p className="text-xl text-gray-700 font-medium">
+                At <span className="font-bold text-gray-900">Finera Global</span>, we empower businesses and accounting firms with reliable, accurate, and scalable financial solutions.
+              </p>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Our expert team leverages the latest technology and best practices to help you focus on growth while we handle the numbers with precision and care.
+              </p>
+            </div>
+          </motion.div>
+        </section>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
-            {heroStats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">{stat.number}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        {/* Experience Section */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6 text-gray-900">
-            Experience Unmatched Accounting and Bookkeeping Services
-          </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            Wondering what sets us apart? It's our unwavering commitment to delivering exceptional outsourced accounting services. From streamlining compliance to empowering smarter decisions, our solutions are designed to drive your success effortlessly.
-          </p>
-        </div>
-
-        {/* Main Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {mainServices.map((service, index) => (
-            <Link key={index} to={service.link} className="group">
-              <Card className="h-full hover:shadow-lg transition-all duration-300 border-0 shadow-md">
-                <CardContent className="p-8">
-                  <div className="mb-6 flex justify-center">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 text-center text-gray-900 group-hover:text-blue-600 transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 text-center mb-6">
-                    {service.description}
-                  </p>
-                  <div className="text-center">
-                    <Button variant="outline" className="group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                      Know More
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
-
-        {/* Catch Up Bookkeeping Section */}
-        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-12 mb-20">
-          <div className="text-center">
-            <h2 className="text-4xl font-bold mb-6 text-gray-900">
-              Catch up Bookkeeping
+        {/* What Do We Serve Section */}
+        <section className="mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              What Do We Serve?
             </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
-              Falling behind on your bookkeeping? Don't stress-we've got you covered! Our expert bookkeepers will clean up your records, get everything up to date, and make tax season a breeze. Let us save you time, money, and hassle, so you can focus on what matters most. We'll handle the numbers while you take charge of your success!
-            </p>
-            <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-4">
-              Get Free Consultation
-            </Button>
+            <div className="w-16 h-0.5 bg-gradient-to-r from-blue-400 to-emerald-400 mx-auto rounded-full"></div>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-4">
+            {servicesOverview.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <ServiceOverviewCard {...service} />
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </section>
 
-        {/* Process Section */}
-        <div className="mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            The Process Behind Our Success
-          </h2>
-          <div className="grid md:grid-cols-5 gap-8">
-            {processSteps.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  {step.number}
-                </div>
-                <h3 className="text-lg font-bold mb-2 text-gray-900">{step.title}</h3>
-                <p className="text-gray-600 text-sm">{step.description}</p>
+        {/* Detailed Service Sections */}
+        <section className="space-y-0">
+          {/* Section 1: Accounting and Bookkeeping */}
+          <AnimatedServiceSection
+            imageSrc="/9.jpg"
+            imageAlt="Accounting and Bookkeeping Services"
+            imageBadge="Professional Team"
+            imageBadgeClass="bg-gradient-to-r from-blue-500 to-blue-600"
+            borderClass="border-blue-300 hover:border-blue-400"
+            title="Accounting and Bookkeeping"
+          >
+            <div className="space-y-6 text-gray-700 mb-10 text-base leading-relaxed">
+              <p>
+                Accurate accounting and bookkeeping is the backbone of every successful business. These functions involve routine tasks such as data entry, bank reconciliations, invoice processing, and ledger maintenance. Accounting and bookkeeping is essential but these routine activities can consume valuable time especially of accounting and book keeping firm, such precious time Accounting and book keeping firm can dedicate to strategic advisory services or enhancing client relationship or any other valuable services by outsourcing these tasks to a reliable outsourcing partner.
+              </p>
+              <p>
+                At <strong className="text-blue-600 font-bold">Finera Global</strong>, we provide reliable and accurate Accounting and bookkeeping services to accounting firms and businesses. we offer scalable back-office support to manage routine work, reduce operational pressure, and handle seasonal workload peaks. Our qualified professionals have expertise in accounting software like Quickbooks, Xero, Sage50, Sage-one.
+              </p>
+              <p>
+                We handle day-to-day financial transactions including recording sales, purchases, receipts, and payments. Our services cover bank and credit card reconciliations, ledger maintenance expense tracking, Debtor Managements and Creditor Managements.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-blue-50 rounded-xl p-6">
+                <p className="font-bold mb-4 text-gray-900 text-lg flex items-center">
+                  <FileText className="mr-3 text-blue-600" size={22} />
+                  Requirements
+                </p>
+                <ul className="text-gray-700 space-y-2 text-sm">
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-blue-500 flex-shrink-0" size={16} />
+                    <span>Invoices (Sales, Purchases, Expenses)</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-blue-500 flex-shrink-0" size={16} />
+                    <span>Bank Statements</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-blue-500 flex-shrink-0" size={16} />
+                    <span>Credit Card Statements</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-blue-500 flex-shrink-0" size={16} />
+                    <span>Cashbook</span>
+                  </li>
+                </ul>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Why Choose Us Section */}
-        <div className="mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            Why We're the Perfect Accounting and Bookkeeping Company for You?
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {whyChooseUs.map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="mb-4 flex justify-center">{item.icon}</div>
-                <div className="text-sm font-medium text-blue-600 mb-2">{index + 1}/5</div>
-                <h3 className="text-lg font-bold mb-3 text-gray-900">{item.title}</h3>
-                <p className="text-gray-600 text-sm">{item.description}</p>
+              <div className="bg-emerald-50 rounded-xl p-6">
+                <p className="font-bold mb-4 text-gray-900 text-lg flex items-center">
+                  <Award className="mr-3 text-emerald-600" size={22} />
+                  Deliverables
+                </p>
+                <ul className="text-gray-700 space-y-2 text-sm">
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-emerald-500 flex-shrink-0" size={16} />
+                    <span>All Ledgers</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-emerald-500 flex-shrink-0" size={16} />
+                    <span>Bank Reconciliation</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-emerald-500 flex-shrink-0" size={16} />
+                    <span>Trial Balance</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-emerald-500 flex-shrink-0" size={16} />
+                    <span>Debtors and Creditors Ageing</span>
+                  </li>
+                </ul>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          </AnimatedServiceSection>
 
-        {/* Technology Partners */}
-        <div className="mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            Driving Results with The Best Technology
-          </h2>
-          <p className="text-xl text-gray-600 text-center mb-12">
-            Our services are backed by top industry software to tackle every accounting and bookkeeping challenge.
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {technologyPartners.map((partner, index) => (
-              <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold mb-2 text-gray-900">{partner.name}</h3>
-                <p className="text-gray-600">{partner.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
+          {/* Section 2: Management Accounting */}
+          <AnimatedServiceSection
+            imageSrc="/9.jpg"
+            imageAlt="Management Accounting Services"
+            imageBadge="Strategic Insights"
+            imageBadgeClass="bg-gradient-to-r from-emerald-500 to-emerald-600"
+            borderClass="border-emerald-300 hover:border-emerald-400"
+            title="Management Accounting"
+          >
+            <div className="space-y-6 text-gray-700 mb-10 text-base leading-relaxed">
+              <p>
+                Management accounting is goes beyond to basic bookkeeping, it is about turning financial data into meaningful insights that support better business decisions. At <strong className="text-emerald-600 font-bold">Finera Global</strong>, we provide tailored management accounting services to UK businesses and Accounting and Bookkeeping firms.
+              </p>
+              <p>
+                Our qualified professional prepare detail management reports including precise information related to margin, turnover, cash flow analysis, budget vs. actual comparisons, and key performance indicators (KPIs). These reports are presented in a clear, concise format that enables business owners and managers to make informed strategic decisions in real time.
+              </p>
+              <p>
+                Whether you are a business owner need monthly reports or an accounting firm seeking white label management accounting services, we deliver timely, accurate, and fully compliant reports.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-emerald-50 rounded-xl p-6">
+                <p className="font-bold mb-4 text-gray-900 text-lg flex items-center">
+                  <FileText className="mr-3 text-emerald-600" size={22} />
+                  Requirements
+                </p>
+                <ul className="text-gray-700 space-y-2 text-sm">
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-emerald-500 flex-shrink-0" size={16} />
+                    <span>Monthly/Quarterly Information regarding the sales, Purchase, Expenses, Bank statements</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-emerald-500 flex-shrink-0" size={16} />
+                    <span>Payroll Information</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-blue-50 rounded-xl p-6">
+                <p className="font-bold mb-4 text-gray-900 text-lg flex items-center">
+                  <Award className="mr-3 text-blue-600" size={22} />
+                  Deliverables
+                </p>
+                <ul className="text-gray-700 space-y-2 text-sm">
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-blue-500 flex-shrink-0" size={16} />
+                    <span>Management accounts reports</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-blue-500 flex-shrink-0" size={16} />
+                    <span>Cash flow Statements</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </AnimatedServiceSection>
 
-        {/* Client Testimonials */}
-        <div className="mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            Client Testimonials
-          </h2>
-          <p className="text-xl text-gray-600 text-center mb-12">
-            See how we've helped others achieve their financial goals with personalized solutions and expert guidance.
-          </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="p-6">
-                <CardContent>
-                  <p className="text-gray-600 mb-4 italic">"{testimonial.quote}"</p>
-                  <div className="border-t pt-4">
-                    <h4 className="font-bold text-gray-900">{testimonial.author}</h4>
-                    <p className="text-sm text-gray-600">{testimonial.position}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+          {/* Section 3: Year-End Accounting */}
+          <AnimatedServiceSection
+            imageSrc="/9.jpg"
+            imageAlt="Year-End Accounting Services"
+            imageBadge="Year-End Compliance"
+            imageBadgeClass="bg-gradient-to-r from-amber-500 to-amber-600"
+            borderClass="border-amber-300 hover:border-amber-400"
+            title="Year-End Accounting"
+          >
+            <div className="space-y-6 text-gray-700 mb-10 text-base leading-relaxed">
+              <p>
+                Year-End Accounting refer to the financial statements that a Company prepares at the end of its financial year. These financial statement provide a snapshot of the financial position and financial performance of the company. Year-End Accounting is an essential part of keeping businesses compliant with regulatory and HMRC requirements, but they have the potential to offer much more.
+              </p>
+              <p>
+                At <strong className="text-amber-600 font-bold">Finera Global</strong>, we provide year-end accounting services to support UK businesses and accountancy firm. We ensure that profit and loss statements, balance sheets, trial balances, and supporting schedules have been prepare with full compliance of UK GAAP. We assist in calculating corporation tax (CT600), and preparing working papers needed for submission to HMRC.
+              </p>
+              <p>
+                Our qualified professionals has sound knowledge of finalisation of accounts like tied up Working Paper File, usage of different software – IRIS, CCH, VT Accounts, Tax Calc, Tax Filer etc.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-amber-50 rounded-xl p-6">
+                <p className="font-bold mb-4 text-gray-900 text-lg flex items-center">
+                  <FileText className="mr-3 text-amber-600" size={22} />
+                  Requirements
+                </p>
+                <ul className="text-gray-700 space-y-2 text-sm">
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-amber-500 flex-shrink-0" size={16} />
+                    <span>Last Year Financial statements</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-amber-500 flex-shrink-0" size={16} />
+                    <span>Last Year Tax return</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-amber-500 flex-shrink-0" size={16} />
+                    <span>Current Year data for account finalization</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-orange-50 rounded-xl p-6">
+                <p className="font-bold mb-4 text-gray-900 text-lg flex items-center">
+                  <Award className="mr-3 text-orange-600" size={22} />
+                  Deliverables
+                </p>
+                <ul className="text-gray-700 space-y-2 text-sm">
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-orange-500 flex-shrink-0" size={16} />
+                    <span>Excel Working Papers</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-orange-500 flex-shrink-0" size={16} />
+                    <span>Trial Balance</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-orange-500 flex-shrink-0" size={16} />
+                    <span>All final ledgers</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-orange-500 flex-shrink-0" size={16} />
+                    <span>Balance sheets and Profit and Loss Accounts</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-orange-500 flex-shrink-0" size={16} />
+                    <span>Tax Computation</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </AnimatedServiceSection>
 
-        {/* CTA Section */}
-        <div className="text-center gradient-primary rounded-2xl p-12">
-          <h2 className="text-4xl font-bold text-primary-foreground mb-6">
-            Streamline Your Finances, One Step At A Time
-          </h2>
-          <p className="text-xl text-primary-foreground/90 mb-8 max-w-3xl mx-auto">
-            Let us take care of your books and make this financial year a good one.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button variant="secondary" size="lg" className="text-lg px-8 py-6">
-                Get Started Today
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-          </div>
-        </div>
+          {/* Section 4: VAT Return */}
+          <AnimatedServiceSection
+            imageSrc="/9.jpg"
+            imageAlt="VAT Return Services"
+            imageBadge="VAT Compliance"
+            imageBadgeClass="bg-gradient-to-r from-indigo-500 to-indigo-600"
+            borderClass="border-indigo-300 hover:border-indigo-400"
+            title="VAT Return"
+          >
+            <div className="space-y-6 text-gray-700 mb-10 text-base leading-relaxed">
+              <p>
+                VAT is governed by specific regulations. Handling VAT returns is one of the most time-consuming and detail sensitive tasks for any UK accountancy practices. As client volumes grow and regulations evolve under Making Tax Digital (MTD), many firms need a helping hand. These accuracy driven tasks demand significant time to ensuring VAT stuffs are properly recorded, declared correct output VAT and claimed correct input VAT.
+              </p>
+              <p>
+                Delays in filing VAT returns can lead to HMRC penalties and impact on client trust. Our expert professional ensure that routine VAT compliance requirements are met.
+              </p>
+              <p>
+                In VAT Return mainly cover things for the financial period like: Total sales and purchases, The VAT amount you owe, The VAT amount you can claim for refund, Your VAT refund amount from HMRC.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-indigo-50 rounded-xl p-6">
+                <p className="font-bold mb-4 text-gray-900 text-lg flex items-center">
+                  <FileText className="mr-3 text-indigo-600" size={22} />
+                  Requirements
+                </p>
+                <ul className="text-gray-700 space-y-2 text-sm">
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-indigo-500 flex-shrink-0" size={16} />
+                    <span>Invoices (Sales, Purchases, Expenses)</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-indigo-500 flex-shrink-0" size={16} />
+                    <span>Bank Statements</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-indigo-500 flex-shrink-0" size={16} />
+                    <span>Credit Card Statements</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-indigo-500 flex-shrink-0" size={16} />
+                    <span>Cashbook</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-purple-50 rounded-xl p-6">
+                <p className="font-bold mb-4 text-gray-900 text-lg flex items-center">
+                  <Award className="mr-3 text-purple-600" size={22} />
+                  Deliverables
+                </p>
+                <ul className="text-gray-700 space-y-2 text-sm">
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-purple-500 flex-shrink-0" size={16} />
+                    <span>VAT Return</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ArrowRight className="mr-2 text-purple-500 flex-shrink-0" size={16} />
+                    <span>VAT Calculation</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </AnimatedServiceSection>
+
+          {/* Section 5: Payroll Management */}
+          <AnimatedServiceSection
+            imageSrc="/9.jpg"
+            imageAlt="Payroll Management Services"
+            imageBadge="Employee Focus"
+            imageBadgeClass="bg-gradient-to-r from-teal-500 to-teal-600"
+            borderClass="border-teal-300 hover:border-teal-400"
+            title="Payroll Management"
+          >
+            <div className="space-y-6 text-gray-700 mb-10 text-base leading-relaxed">
+              <p>
+                We understand that payroll is not just about numbers it is about people. Error in payroll processing does not leading to penalty but it is affect on employee morale, trust and expectation toward company and we ensure that it is never happen.
+              </p>
+              <p>
+                Payroll Processing work includes data entry of timesheet, generating payslip, checking employees fall into an auto-enrolment pension scheme. It also requires frequent changes as per client requirements. Many accountancy practices feel the payroll processing task is Boring and time-consuming.
+              </p>
+              <p>
+                Our professional is proficient in all rules and regulations for payroll/pension processing, RTI filling, Auto-Enrolment Pension.
+              </p>
+            </div>
+            <div className="bg-teal-50 rounded-xl p-6">
+              <p className="font-bold mb-4 text-gray-900 text-lg flex items-center">
+                <Award className="mr-3 text-teal-600" size={22} />
+                At Finera Global shall take care of all the aspects of payroll as under:
+              </p>
+              <ul className="text-gray-700 space-y-2 text-sm">
+                <li className="flex items-center">
+                  <ArrowRight className="mr-2 text-teal-500 flex-shrink-0" size={16} />
+                  <span>Pay slips</span>
+                </li>
+                <li className="flex items-center">
+                  <ArrowRight className="mr-2 text-teal-500 flex-shrink-0" size={16} />
+                  <span>Payroll Summary Period wise</span>
+                </li>
+                <li className="flex items-center">
+                  <ArrowRight className="mr-2 text-teal-500 flex-shrink-0" size={16} />
+                  <span>Expense reports of Employee</span>
+                </li>
+                <li className="flex items-center">
+                  <ArrowRight className="mr-2 text-teal-500 flex-shrink-0" size={16} />
+                  <span>Form P45</span>
+                </li>
+                <li className="flex items-center">
+                  <ArrowRight className="mr-2 text-teal-500 flex-shrink-0" size={16} />
+                  <span>New Employee Starter checklist</span>
+                </li>
+                <li className="flex items-center">
+                  <ArrowRight className="mr-2 text-teal-500 flex-shrink-0" size={16} />
+                  <span>Form P60</span>
+                </li>
+                <li className="flex items-center">
+                  <ArrowRight className="mr-2 text-teal-500 flex-shrink-0" size={16} />
+                  <span>Pension Calculations & all what you want</span>
+                </li>
+              </ul>
+            </div>
+          </AnimatedServiceSection>
+        </section>
       </div>
     </div>
   );

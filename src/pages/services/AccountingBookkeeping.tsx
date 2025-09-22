@@ -3,265 +3,143 @@ import { Button } from '@/components/ui/button';
 import { 
   CheckCircle,
   ArrowRight,
-  BookOpen,
-  Users,
-  Shield,
-  Clock,
-  TrendingUp,
   FileText,
-  DollarSign,
-  Building2
+  TrendingUp,
+  Calculator,
+  Clock,
+  Shield,
+  Building2,
+  Users,
+  DollarSign
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AccountingBookkeeping = () => {
-  const services = [
-    "Transaction recording and categorization",
-    "Bank reconciliations", 
-    "Accounts payable and receivable management",
-    "Monthly financial statements preparation",
-    "General ledger maintenance",
-    "Chart of accounts setup and maintenance",
-    "Inventory tracking and valuation",
-    "Fixed assets management",
-    "Cash flow monitoring",
-    "Financial reporting and analysis"
-  ];
-
-  const benefits = [
-    {
-      icon: <Clock className="h-8 w-8 text-accent" />,
-      title: "Time Efficiency",
-      description: "Focus on core business activities while we handle your financial operations"
-    },
-    {
-      icon: <Shield className="h-8 w-8 text-accent" />,
-      title: "Data Security",
-      description: "Bank-level security protocols to protect your sensitive financial information"
-    },
-    {
-      icon: <TrendingUp className="h-8 w-8 text-accent" />,
-      title: "Cost Savings", 
-      description: "Reduce overhead costs compared to maintaining in-house accounting staff"
-    },
-    {
-      icon: <CheckCircle className="h-8 w-8 text-accent" />,
-      title: "Compliance Assurance",
-      description: "Stay compliant with latest regulations and accounting standards"
-    }
-  ];
-
-  const clientDocuments = [
-    "Invoices (Sales, Purchases, Expenses)",
-    "Bank Statements", 
-    "Credit Card Statements",
-    "Cashbook",
-    "Receipts and supporting documents",
-    "Payroll records",
-    "Tax documents",
-    "Previous financial statements"
-  ];
-
-  const deliverables = [
-    "Debtors and Creditors Ageing",
-    "All Ledgers",
-    "Bank Reconciliation",
-    "Trial Balance",
-    "Monthly financial statements",
-    "Cash flow statements",
-    "Balance sheet",
-    "Profit and loss statement",
-    "General ledger reports",
-    "Aged receivables and payables"
-  ];
-
   return (
-    <div className="min-h-screen py-20">
+    <div className="min-h-screen bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-6">Accounting and Bookkeeping Services</h1>
+          <h1 className="text-6xl font-bold mb-6 text-gray-900">Accounting and Bookkeeping Services</h1>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            Reliable and accurate accounting and bookkeeping services to help you focus on growing your business
+          </p>
         </div>
 
-        {/* Main Content - Overlapping Layout */}
-        <div className="mb-16">
-          <div className="border-2 border-dashed border-blue-300 rounded-lg p-8 relative">
-            <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[500px]">
-              {/* Left Column - Image */}
+        {/* Main Service Section - Matching Services Page Design */}
+        <div className="mb-20">
+          <div className="relative">
+            {/* Image outside border - top-left */}
+            <div className="absolute -top-8 -left-4 z-10">
               <div className="relative">
                 <img 
-                  src="/placeholder.svg" 
+                  src="/9.jpg" 
                   alt="Accounting and Bookkeeping Services"
-                  className="w-full h-[500px] object-cover rounded-lg shadow-lg"
+                  className="w-[300px] h-[320px] object-cover rounded-xl shadow-2xl border-4 border-white"
                 />
-                <div className="absolute top-4 right-4 bg-white/90 px-2 py-1 rounded text-xs text-gray-600">
-                  freepik
+                <div className="absolute top-4 right-4 bg-gradient-to-r from-teal-500 to-blue-600 text-white px-3 py-2 rounded-lg text-sm font-semibold shadow-lg">
+                  Professional Team
                 </div>
               </div>
-              
-              {/* Right Column - Content that overlaps */}
-              <div className="relative z-10 -ml-16 lg:-ml-20">
-                <div className="bg-white rounded-lg p-8 shadow-lg border">
-                  <h2 className="text-4xl font-bold mb-6 text-gray-800 relative">
+            </div>
+            
+            {/* Text Content with Enhanced Border */}
+            <div className="ml-64 pt-32">
+              <div className="border-4 border-dotted border-teal-400 rounded-2xl p-10 bg-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-teal-500">
+                <div className="px-8 py-6">
+                  <h2 className="text-5xl font-bold mb-10 text-gray-900 leading-tight">
                     Accounting and Bookkeeping
-                    <div className="absolute bottom-0 left-0 w-16 h-1 bg-blue-600"></div>
                   </h2>
                   
-                  <div className="space-y-4 text-gray-700">
+                  <div className="space-y-6 text-gray-700 mb-10 text-lg leading-relaxed">
                     <p>
-                      Nowadays, Bookkeeping work is becoming most regular work for each and every Accountancy Firm. 
-                      Bookkeeping work is a volume-based work, which involved data entry, analysis of transactions, 
-                      reconciling banking transactions etc.
+                      Accurate accounting and bookkeeping is the backbone of every successful business. These functions involve routine tasks such as data entry, bank reconciliations, invoice processing, and ledger maintenance. Accounting and bookkeeping is essential but these routine activities can consume valuable time especially of accounting and book keeping firm, such precious time Accounting and book keeping firm can dedicate to strategic advisory services or enhancing client relationship or any other valuable services by outsourcing these tasks to a reliable outsourcing partner.
                     </p>
                     
                     <p>
-                      Bookkeeping work is lengthy process task and over a period of time, staff are going to bored 
-                      as it is monotones task at certain level.
+                      At <strong className="text-teal-600 font-bold">Finera Global</strong>, we provide reliable and accurate Accounting and bookkeeping services to accounting firms and businesses. we offer scalable back-office support to manage routine work, reduce operational pressure, and handle seasonal workload peaks. Our qualified professionals have expertise in accounting software like Quickbooks, Xero, Sage50, Sage-one.
                     </p>
                     
                     <p>
-                      Accountancy Firm can utilise outsourcing bookkeeping services of <strong>FINERA Global</strong>, 
-                      which reduce burden of staff. Accountancy Firm can delegate other advancement task to their 
-                      staff and maximize their potentiality.
+                      We handle day-to-day financial transactions including recording sales, purchases, receipts, and payments. Our services cover bank and credit card reconciliations, ledger maintenance expense tracking, Debtor Managements and Creditor Managements.
                     </p>
                     
                     <p>
-                      FINERA Global has their dedicated bookkeeping team, where all the team members are XERO and 
-                      QuickBook Certified and they have sound knowledge of VAT compliance and Bookkeeping.
+                      You can leave all your critical bookkeeping tasks to us and focus on high income generating accounting and taxation tasks. We provide you with feedback on an on-going basis. Due to this transparent approach, you gain better actionable insights into your financial performance, which can empower you to manage your business better.
                     </p>
+                  </div>
+
+                  {/* Enhanced Requirements Section */}
+                  <div className="bg-gradient-to-r from-blue-50 to-teal-50 rounded-xl p-6 mb-8">
+                    <p className="font-bold mb-4 text-gray-900 text-xl flex items-center">
+                      <FileText className="mr-2 text-teal-600" size={24} />
+                      Clients need to provide following documents for Bookkeeping services:
+                    </p>
+                    <ul className="text-gray-700 ml-8 space-y-2 text-lg">
+                      <li className="flex items-center">
+                        <CheckCircle className="mr-2 text-teal-500" size={16} />
+                        Invoices (Sales, Purchases, Expenses)
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="mr-2 text-teal-500" size={16} />
+                        Bank Statements
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="mr-2 text-teal-500" size={16} />
+                        Credit Card Statements
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="mr-2 text-teal-500" size={16} />
+                        Cashbook
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="mr-2 text-teal-500" size={16} />
+                        Receipts and supporting documents
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="mr-2 text-teal-500" size={16} />
+                        Payroll records
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Enhanced Results Section */}
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6">
+                    <p className="font-bold mb-4 text-gray-900 text-xl flex items-center">
+                      <TrendingUp className="mr-2 text-emerald-600" size={24} />
+                      We will Deliver following results:
+                    </p>
+                    <ul className="text-gray-700 ml-8 space-y-2 text-lg">
+                      <li className="flex items-center">
+                        <ArrowRight className="mr-2 text-emerald-500" size={16} />
+                        All Ledgers
+                      </li>
+                      <li className="flex items-center">
+                        <ArrowRight className="mr-2 text-emerald-500" size={16} />
+                        Bank Reconciliation
+                      </li>
+                      <li className="flex items-center">
+                        <ArrowRight className="mr-2 text-emerald-500" size={16} />
+                        Trial Balance
+                      </li>
+                      <li className="flex items-center">
+                        <ArrowRight className="mr-2 text-emerald-500" size={16} />
+                        Debtors and Creditors Ageing
+                      </li>
+                      <li className="flex items-center">
+                        <ArrowRight className="mr-2 text-emerald-500" size={16} />
+                        Monthly financial statements
+                      </li>
+                      <li className="flex items-center">
+                        <ArrowRight className="mr-2 text-emerald-500" size={16} />
+                        Cash flow statements
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Services We Offer */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">Outsourced Accounting and Bookkeeping Services We Offer</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
-              <div key={index} className="flex items-start space-x-3">
-                <CheckCircle className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
-                <span className="text-muted-foreground">{service}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Why Choose Us */}
-        <div className="bg-card rounded-2xl p-12 shadow-elegant mb-16">
-          <h2 className="text-4xl font-bold text-center mb-12">Why Choose FINERA Global for Bookkeeping?</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="text-center">
-                <div className="mb-4 flex justify-center">{benefit.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
-                <p className="text-muted-foreground">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Client Documents and Deliverables */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          <Card className="shadow-elegant">
-            <CardHeader>
-              <CardTitle className="text-2xl text-accent">Clients need to provide following documents:</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                {clientDocuments.map((doc, idx) => (
-                  <li key={idx} className="flex items-start space-x-3">
-                    <CheckCircle className="h-4 w-4 text-accent flex-shrink-0 mt-1" />
-                    <span className="text-muted-foreground">{doc}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="shadow-elegant">
-            <CardHeader>
-              <CardTitle className="text-2xl text-accent">We will provide following results:</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                {deliverables.map((deliverable, idx) => (
-                  <li key={idx} className="flex items-start space-x-3">
-                    <CheckCircle className="h-4 w-4 text-accent flex-shrink-0 mt-1" />
-                    <span className="text-muted-foreground">{deliverable}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Our Expertise Team */}
-        <Card className="shadow-elegant mb-16">
-          <CardHeader className="text-center">
-            <CardTitle className="text-3xl">Our Expertise Team</CardTitle>
-            <p className="text-xl text-muted-foreground">
-              Skilled professionals with sound knowledge of accounting software and compliance
-            </p>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-accent/10 text-accent flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  <Building2 className="h-8 w-8" />
-                </div>
-                <h3 className="text-lg font-bold mb-2">Certified Professionals</h3>
-                <p className="text-muted-foreground text-sm">
-                  Our team members are XERO and QuickBooks Certified with sound knowledge of VAT compliance
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-accent/10 text-accent flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  <Shield className="h-8 w-8" />
-                </div>
-                <h3 className="text-lg font-bold mb-2">Software Expertise</h3>
-                <p className="text-muted-foreground text-sm">
-                  Proficient in IRIS, CCH, VT Accounts, Tax Calc, NetSuite, FreshBooks, and more
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-accent/10 text-accent flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  <TrendingUp className="h-8 w-8" />
-                </div>
-                <h3 className="text-lg font-bold mb-2">Quality Assurance</h3>
-                <p className="text-muted-foreground text-sm">
-                  Continuous feedback and transparent approach for better actionable insights
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* CTA Section */}
-        <div className="text-center gradient-primary rounded-2xl p-12">
-          <h2 className="text-4xl font-bold text-primary-foreground mb-6">
-            Ready to Streamline Your Bookkeeping?
-          </h2>
-          <p className="text-xl text-primary-foreground/90 mb-8 max-w-3xl mx-auto">
-            Leave all your critical bookkeeping tasks to us and focus on high income generating accounting and taxation tasks. 
-            We provide you with feedback on an ongoing basis.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button variant="secondary" size="lg" className="text-lg px-8 py-6">
-                Get Started Today
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            <Link to="/services">
-              <Button variant="secondary" size="lg" className="text-lg px-8 py-6 text-gray-400 hover:text-primary">
-                View All Services
-              </Button>
-            </Link>
           </div>
         </div>
       </div>
