@@ -1,210 +1,96 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight, Shield, TrendingUp, Users, Award, CheckCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import WhyChooseUsSection from "./Home/WhyChooseUs";
+import WhatDoWeServeSection from "./Home/WhatDoWeServeSection";
+import TechnologiesCapabilitiesSection from "./Home/TechnologiesCapabilitiesSection";
 
-const Home = () => {
+const Index = () => {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 gradient-subtle"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-8 gradient-primary bg-clip-text text-transparent">
-              FINERA GLOBAL
-            </h1>
-            <p className="text-xl lg:text-2xl text-muted-foreground mb-4 max-w-4xl mx-auto">
-              Reliable & Trusted Outsourcing Partner
-            </p>
-            <p className="text-lg lg:text-xl text-foreground mb-12 max-w-3xl mx-auto font-medium">
-              Forward-thinking outsourcing firm providing exceptional financial services with unwavering commitment to quality, innovation, and client success.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/services">
-                <Button size="lg" className="gradient-primary text-lg px-8 py-6 shadow-elegant hover:shadow-glow transition-smooth">
-                  Explore Our Services
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-2 hover:bg-accent hover:border-accent">
-                  Get In Touch
-                </Button>
-              </Link>
-            </div>
+    <main className="min-h-screen w-full bg-background text-gray-900 font-sans">
+      {/* Enhanced Hero Section - Left Aligned */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background Image with Better Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80"
+            alt="Professional landscape background"
+            className="w-full h-full object-cover"
+          />
+          {/* Gradient Overlay for Better Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+        </div>
+
+        {/* Left-aligned Content Container */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-4xl lg:max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, x: -50, y: 30 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-8 text-left"
+            >
+              {/* Main Heading */}
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
+                Professional UK
+                <br />
+                <span className="text-blue-400">Accounting Services</span>
+              </h1>
+
+              {/* Subheading */}
+              <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-3xl">
+                Your trusted partner for all accounting requirements, where experienced 
+                financial services experts help streamline your operations and drive success.
+              </p>
+
+              {/* Enhanced CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="pt-4"
+              >
+                <a
+                  href="/contact-us"
+                  className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  Get in Touch
+                  <svg 
+                    className="ml-2 -mr-1 w-5 h-5" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
-      </section>
-      {/* Core Values Section
-      <section className="py-20 bg-card">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Our Core Values</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Built on the foundation of excellence, integrity, and client-centric approach
-            </p>
+
+        {/* Scroll Indicator - Still Centered */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        >
+          <div className="flex flex-col items-center space-y-2">
+            <div className="w-0.5 h-16 bg-white/30"></div>
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-2 h-2 bg-white rounded-full"
+            ></motion.div>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="shadow-elegant hover:shadow-glow transition-smooth">
-              <CardContent className="p-8 text-center">
-                <Shield className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3">Integrity</h3>
-                <p className="text-muted-foreground">
-                  Upholding the highest standards of honesty and transparency in all our services.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-elegant hover:shadow-glow transition-smooth">
-              <CardContent className="p-8 text-center">
-                <CheckCircle className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3">Accountability</h3>
-                <p className="text-muted-foreground">
-                  Taking ownership of the quality and outcomes of the services we deliver.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-elegant hover:shadow-glow transition-smooth">
-              <CardContent className="p-8 text-center">
-                <TrendingUp className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3">Innovation</h3>
-                <p className="text-muted-foreground">
-                  Embracing technology and modern practices to enhance client experience.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-elegant hover:shadow-glow transition-smooth">
-              <CardContent className="p-8 text-center">
-                <Users className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3">Client-Centricity</h3>
-                <p className="text-muted-foreground">
-                  Ensuring exceptional service delivery and building lasting partnerships.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Why Choose Us Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl font-bold mb-8">Why Choose Finera Global?</h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <Award className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Global Expertise</h3>
-                    <p className="text-muted-foreground">
-                      Specialized knowledge in outsourced bookkeeping and taxation services.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <TrendingUp className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Cost-Efficient Solutions</h3>
-                    <p className="text-muted-foreground">
-                      Reduce overhead and administrative burdens while maintaining quality.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <Shield className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Improved Operational Efficiency</h3>
-                    <p className="text-muted-foreground">
-                      Focus on strategic business growth while we handle your financial operations.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <Users className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Reliable Partnership</h3>
-                    <p className="text-muted-foreground">
-                      Dedicated team committed to your success with proven track record.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Compliance & Accuracy</h3>
-                    <p className="text-muted-foreground">
-                      Ensure peace of mind and adherence to financial regulations.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative">
-              <Card className="shadow-elegant p-8">
-                <CardContent className="p-0">
-                  <h3 className="text-2xl font-bold mb-6 text-center">Our Impact</h3>
-                  <div className="grid grid-cols-2 gap-8">
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-accent mb-2">500+</div>
-                      <div className="text-muted-foreground">Clients Served</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-accent mb-2">99%</div>
-                      <div className="text-muted-foreground">Client Retention</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-accent mb-2">4+</div>
-                      <div className="text-muted-foreground">Years Experience</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-accent mb-2">24/7</div>
-                      <div className="text-muted-foreground">Support Available</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 gradient-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-primary-foreground mb-6">
-            Ready to Transform Your Financial Operations?
-          </h2>
-          <p className="text-xl text-primary-foreground/90 mb-8 max-w-3xl mx-auto">
-            Let Finera Global be your trusted partner in achieving financial excellence and operational efficiency.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button variant="secondary" size="lg" className="text-lg px-8 py-6">
-                Start Your Journey
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            <Link to="/about">
-              <Button variant="secondary" size="lg" className="text-lg px-8 py-6 text-gray-400 hover:text-primary">
-                Learn More About Us
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+      {/* Services Sections with Better Spacing */}
+      <WhatDoWeServeSection />
+      <WhyChooseUsSection />
+      <TechnologiesCapabilitiesSection />
+    </main>
   );
 };
 
-export default Home;
+export default Index;

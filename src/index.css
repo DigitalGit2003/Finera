@@ -115,7 +115,8 @@
   }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-300;
+    @apply bg-background text-foreground transition-colors duration-300 font-sans;
+    font-family: 'Inter', ui-sans-serif, system-ui, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   }
 
   /* Professional animations and utilities */
