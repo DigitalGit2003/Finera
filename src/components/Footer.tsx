@@ -56,17 +56,17 @@ const Footer: React.FC = () => {
             <h4 className="text-xl font-semibold mb-6 text-white">About Us</h4>
             <ul className="space-y-3">
               <li>
-                <a href="/about-finera" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="/about" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   About Finera
                 </a>
               </li>
               <li>
-                <a href="/vision" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="/about#vision" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   Vision
                 </a>
               </li>
               <li>
-                <a href="/core-values" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="/about#core-values" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   Core Values
                 </a>
               </li>
@@ -88,17 +88,17 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="/services/year-end" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="/services/year-end-accounting" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   Year-End Accounting
                 </a>
               </li>
               <li>
-                <a href="/services/vat-return" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="/services/VAT-return" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   VAT Return
                 </a>
               </li>
               <li>
-                <a href="/services/payroll" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="/services/payroll-management" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   Payroll Management
                 </a>
               </li>
@@ -126,9 +126,7 @@ const Footer: React.FC = () => {
                 </a>
               </div>
               <div className="text-gray-300 leading-relaxed">
-                123, Finera Business Park, Main Road,
-                <br />
-                Mumbai, India
+                123, Finera Business Park, Main Road,<br />Mumbai, India
               </div>
             </div>
           </div>
