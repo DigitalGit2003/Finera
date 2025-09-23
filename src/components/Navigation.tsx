@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Moon, Sun, Menu, X, ChevronDown } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +10,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
-  const { theme, setTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -39,18 +37,16 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-card border-b border-border shadow-elegant sticky top-0 z-50 backdrop-blur-sm">
+  <nav className="bg-white border-b border-amber-400 shadow-elegant sticky top-0 z-50 backdrop-blur-sm font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <div className="relative font-extrabold text-xl tracking-wider uppercase">
-              <span className="relative z-10 text-black px-8 py-3">
+              <span className="relative z-10 text-amber-700 px-8 py-3">
                 FINERA GLOBAL
               </span>
-              <div className="absolute inset-0 
-                              bg-[radial-gradient(circle_at_center,rgba(251,191,36,1)_70%,rgba(0,0,0,0)_100%)] 
-                              blur-xl"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(251,191,36,0.15)_70%,rgba(0,0,0,0)_100%)] blur-xl"></div>
             </div>
           </Link>
           {/* <Link to="/" className="flex items-center">
@@ -75,11 +71,11 @@ const Navigation = () => {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`text-sm font-medium tracking-wide transition-smooth hover:text-accent ${
-                        isActive(item.path) || item.dropdownItems?.some(subItem => isActive(subItem.path))
-                          ? 'text-accent border-b-2 border-accent'
-                          : 'text-muted-foreground'
-                      }`}
+                      className={`text-sm font-semibold tracking-wide transition-smooth px-3 py-2 rounded-md
+                        ${isActive(item.path) || item.dropdownItems?.some(subItem => isActive(subItem.path))
+                          ? 'text-amber-700 border-b-2 border-amber-500 bg-amber-50'
+                          : 'text-neutral-800 hover:text-amber-700 hover:bg-amber-100'}
+                      `}
                     >
                       {item.label}
                       <ChevronDown className="ml-1 h-3 w-3" />
@@ -90,8 +86,10 @@ const Navigation = () => {
                       <DropdownMenuItem key={dropdownItem.path} asChild>
                         <Link
                           to={dropdownItem.path}
-                          className={`w-full ${
-                            isActive(dropdownItem.path) ? 'bg-accent/10 text-accent' : ''
+                          className={`w-full px-3 py-2 rounded transition-smooth ${
+                            isActive(dropdownItem.path)
+                              ? 'bg-amber-100 text-amber-700 font-semibold'
+                              : 'hover:bg-amber-50 hover:text-amber-700 text-neutral-800'
                           }`}
                         >
                           {dropdownItem.label}
@@ -104,40 +102,22 @@ const Navigation = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`text-sm font-medium tracking-wide transition-smooth hover:text-accent ${
-                    isActive(item.path)
-                      ? 'text-accent border-b-2 border-accent'
-                      : 'text-muted-foreground'
-                  }`}
+                  className={`text-sm font-semibold tracking-wide transition-smooth px-3 py-2 rounded-md
+                    ${isActive(item.path)
+                      ? 'text-amber-700 border-b-2 border-amber-500 bg-amber-50'
+                      : 'text-neutral-800 hover:text-amber-700 hover:bg-amber-100'}
+                  `}
                 >
                   {item.label}
                 </Link>
               )
             ))}
             
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="ml-4"
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
+
           </div>
 
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            </Button>
-            
             <Button
               variant="ghost"
               size="icon"
@@ -150,12 +130,12 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-border bg-card">
+          <div className="lg:hidden border-t border-amber-300 bg-white">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 item.hasDropdown ? (
                   <div key={item.path}>
-                    <div className="px-3 py-2 text-sm font-medium tracking-wide text-muted-foreground">
+                    <div className="px-3 py-2 text-sm font-semibold tracking-wide text-amber-700">
                       {item.label}
                     </div>
                     <div className="ml-4 space-y-1">
@@ -163,10 +143,10 @@ const Navigation = () => {
                         <Link
                           key={dropdownItem.path}
                           to={dropdownItem.path}
-                          className={`block px-3 py-2 text-sm font-medium tracking-wide transition-smooth ${
+                          className={`block px-3 py-2 text-sm font-semibold tracking-wide rounded transition-smooth ${
                             isActive(dropdownItem.path)
-                              ? 'text-accent bg-accent/10'
-                              : 'text-muted-foreground hover:text-accent hover:bg-accent/5'
+                              ? 'text-amber-700 bg-amber-100'
+                              : 'text-neutral-800 hover:text-amber-700 hover:bg-amber-100'
                           }`}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -179,10 +159,10 @@ const Navigation = () => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`block px-3 py-2 text-sm font-medium tracking-wide transition-smooth ${
+                    className={`block px-3 py-2 text-sm font-semibold tracking-wide rounded transition-smooth ${
                       isActive(item.path)
-                        ? 'text-accent bg-accent/10'
-                        : 'text-muted-foreground hover:text-accent hover:bg-accent/5'
+                        ? 'text-amber-700 bg-amber-100'
+                        : 'text-neutral-800 hover:text-amber-700 hover:bg-amber-100'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -196,6 +176,6 @@ const Navigation = () => {
       </div>
     </nav>
   );
-};
+}
 
 export default Navigation;
