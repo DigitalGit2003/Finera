@@ -1,5 +1,5 @@
 import React from 'react';
-import EngagementModelsSection from './Home/Engage/EngagementModelsSection';
+import EngagementModelsSection from './Engage/EngagementModelsSection';
 
 const FlexibilitySection: React.FC = () => {
   return (
