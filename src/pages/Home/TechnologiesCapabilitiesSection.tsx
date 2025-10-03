@@ -1,31 +1,18 @@
 import Slider from "react-slick";
 
 const technologies = [
-  {
-    name: "Xero",
-    img: "https://logos-world.net/wp-content/uploads/2022/05/Xero-Logo.png"
-  },
-  {
-    name: "QuickBooks",
-    img: "https://upload.wikimedia.org/wikipedia/commons/4/4f/QuickBooks_logo.png"
-  },
-  {
-    name: "Zoho Books",
-    img: "https://media.licdn.com/dms/image/D4D0BAQEvMoPBX9J77g/company-logo_200_200/0/1702959415275?e=2147483647&v=beta&t=1eQwI8hncTe96WkBKSqunNNO3J2_Gv1nf6Jfq8g4X3o"
-  },
-  {
-    name: "SAP",
-    img: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg"
-  },
-  {
-    name: "Oracle",
-    img: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg"
-  },
-  {
-    name: "FreshBooks",
-    img: "https://cdn.worldvectorlogo.com/logos/freshbooks-1.svg"
-  },
-  // ...add more!
+  { name: "Sage", img: "./tech1.jpg" },
+  { name: "Xero", img: "/tech2.jpg" },
+  { name: "FreshBooks", img: "/tech3.jpg" },
+  { name: "TaxCal", img: "/tech4.jpg" },
+  { name: "Hubdoc", img: "/tech5.jpg" },
+  { name: "QuickBooks", img: "/tech6.jpg" },
+  { name: "FreeAgent", img: "/tech7.jpg" },
+  { name: "IRIS", img: "/tech8.jpg" },
+  { name: "Moneysoft", img: "/tech9.jpg" },
+  { name: "BrightPay", img: "/tech10.jpg" },
+  { name: "AutoEntry", img: "/tech11.jpg" },
+  { name: "Dext", img: "/tech12.jpg" },
 ];
 
 const settings = {
@@ -35,7 +22,7 @@ const settings = {
   slidesToShow: 5, // Show 5 on desktop!
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 2000,
+  autoplaySpeed: 5000,
   cssEase: "ease-in-out",
   arrows: false,
   responsive: [
@@ -52,13 +39,13 @@ const TechnologiesCapabilitiesSection = () => (
     </h2>
     <Slider {...settings}>
       {technologies.map((tech) => (
-        <div key={tech.name} className="flex flex-col items-center justify-center px-6 py-10">
+  <div key={tech.name} className="flex flex-col items-center justify-center px-6 py-10 w-full">
           <img
             src={tech.img}
             alt={tech.name}
-            className="w-24 h-24 object-contain rounded-full bg-gray-100 mb-4 shadow"
+            className="w-24 h-24 object-contain rounded-full bg-gray-100 mb-4 shadow mx-auto"
           />
-          <span className="text-xl font-medium">{tech.name}</span>
+          <span className="text-xl font-medium w-full text-center flex justify-center">{tech.name}</span>
         </div>
       ))}
     </Slider>

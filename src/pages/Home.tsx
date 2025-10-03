@@ -3,10 +3,12 @@ import HeroSection from "./Home/HeroSection";
 import WhyChooseUsSection from "./Home/WhyChooseUs";
 import WhatDoWeServeSection from "./Home/WhatDoWeServeSection";
 import TechnologiesCapabilitiesSection from "./Home/TechnologiesCapabilitiesSection";
+import RotatingBackgroundHero from './Home/RotatingBackgroundHero';
 
 const Index = () => {
   return (
     <main className="min-h-screen w-full bg-background text-gray-900 font-sans">
+      <RotatingBackgroundHero/>
       <HeroSection />
       <WhatDoWeServeSection />
       <WhyChooseUsSection />
