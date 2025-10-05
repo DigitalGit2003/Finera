@@ -54,9 +54,7 @@ const AboutMainSection: React.FC = () => (
             </h3>
             <div className="w-12 h-1 bg-blue-600 mx-auto mb-5 rounded-full"></div>
             <p className="text-base text-gray-700 leading-relaxed">
-              To serve the maximum number of UK accountants with our skilled 
-              staff and cost-effective structure, adhering to a "Grow Together" 
-              concept.
+              To provide accurate, reliable, and cost-efficient accounting and tax support to UK businesses and practice firms, enabling them to streamline financial operations, reduce workload, and focus on delivering greater value to their clients.
             </p>
           </div>
         </motion.div>
@@ -81,10 +79,7 @@ const AboutMainSection: React.FC = () => (
             </h3>
             <div className="w-12 h-1 bg-blue-600 mx-auto mb-5 rounded-full"></div>
             <p className="text-base text-gray-700 leading-relaxed">
-              To cater to UK accountancy firms by providing accurate, efficient, 
-              and cost-effective solutions. Using high-end technology and highly 
-              skilled staff, we empower our outsourcing partners to focus on their 
-              business development activities.
+              To cater to the UK accounting and taxation industry through consistent service excellence, client-first values, and technology-driven financial solutions.
             </p>
           </div>
         </motion.div>

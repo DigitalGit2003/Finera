@@ -225,7 +225,7 @@ const Services = () => {
         <section>
           {/* Section 1: Accounting and Bookkeeping */}
           <AnimatedServiceSection
-            imageSrc="/9.jpg"
+            imageSrc="/AccountingBookKeepingService.jpg"
             imageAlt="Accounting and Bookkeeping Services"
             imageBadge="Professional Team"
             imageBadgeClass="bg-gradient-to-r from-blue-500 to-blue-600"
@@ -297,7 +297,7 @@ const Services = () => {
 
           {/* Section 2: Management Accounting */}
           <AnimatedServiceSection
-            imageSrc="/9.jpg"
+            imageSrc="/ManagementAccountingService.jpg"
             imageAlt="Management Accounting Services"
             imageBadge="Strategic Insights"
             imageBadgeClass="bg-gradient-to-r from-emerald-500 to-emerald-600"
@@ -353,7 +353,7 @@ const Services = () => {
 
           {/* Section 3: Year-End Accounting */}
           <AnimatedServiceSection
-            imageSrc="/9.jpg"
+            imageSrc="/YearEndAccountingService.jpg"
             imageAlt="Year-End Accounting Services"
             imageBadge="Year-End Compliance"
             imageBadgeClass="bg-gradient-to-r from-amber-500 to-amber-600"
@@ -425,7 +425,7 @@ const Services = () => {
 
           {/* Section 4: VAT Return */}
           <AnimatedServiceSection
-            imageSrc="/9.jpg"
+            imageSrc="/VATService.jpg"
             imageAlt="VAT Return Services"
             imageBadge="VAT Compliance"
             imageBadgeClass="bg-gradient-to-r from-indigo-500 to-indigo-600"
@@ -489,7 +489,7 @@ const Services = () => {
 
           {/* Section 5: Payroll Management */}
           <AnimatedServiceSection
-            imageSrc="/9.jpg"
+            imageSrc="/PayrollService.jpg"
             imageAlt="Payroll Management Services"
             imageBadge="Employee Focus"
             imageBadgeClass="bg-gradient-to-r from-teal-500 to-teal-600"

@@ -20,7 +20,7 @@ const ManagementAccounting = () => {
             <div className="absolute -top-8 -left-4 z-10">
               <div className="relative">
                 <img 
-                  src="/9.jpg" 
+                  src="/ManagementAccountingService.jpg" 
                   alt="Management Accounting Services"
                   className="w-[300px] h-[320px] object-cover rounded-xl shadow-2xl border-4 border-white"
                 />

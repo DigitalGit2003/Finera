@@ -14,7 +14,7 @@ const MeetOurTeamSection: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Meet Our Team
+            Meet Our Founder
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto mb-6 rounded-full"></div>
           <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">

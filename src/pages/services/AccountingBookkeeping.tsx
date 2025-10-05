@@ -34,7 +34,7 @@ const AccountingBookkeeping = () => {
             <div className="absolute -top-8 -left-4 z-10">
               <div className="relative">
                 <img 
-                  src="/9.jpg" 
+                  src="/AccountingBookKeepingService.jpg" 
                   alt="Accounting and Bookkeeping Services"
                   className="w-[300px] h-[320px] object-cover rounded-xl shadow-2xl border-4 border-white"
                 />
