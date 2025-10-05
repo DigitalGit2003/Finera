@@ -45,25 +45,6 @@ const ContactUsPage: React.FC = () => {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Get In Touch
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              Ready to streamline your accounting processes? Let's discuss how we can help your business grow.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Contact Information & Form Section */}
       <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -318,48 +299,6 @@ const ContactUsPage: React.FC = () => {
                 </form>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="bg-gradient-to-b from-gray-50 to-gray-100 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <div className="w-16 h-0.5 bg-blue-600 mx-auto"></div>
-          </div>
-
-          <div className="space-y-6">
-            {[
-              {
-                question: "How quickly can you start working on our accounting?",
-                answer: "We can typically start within 1-2 business days after our initial consultation and agreement setup."
-              },
-              {
-                question: "Do you work with international clients?",
-                answer: "Yes, we specialize in working with UK-based businesses and have extensive experience with international accounting standards."
-              },
-              {
-                question: "What accounting software do you use?",
-                answer: "We work with all major accounting platforms including QuickBooks, Xero, Sage, and can adapt to your preferred software."
-              },
-              {
-                question: "How do you ensure data security?",
-                answer: "We use bank-level security measures, encrypted communications, and follow strict confidentiality protocols to protect your financial data."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </section>

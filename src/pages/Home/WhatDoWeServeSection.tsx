@@ -63,6 +63,7 @@ const WhatDoWeServeSection: React.FC = () => {
             What Do We Serve?
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-amber-500 mx-auto rounded-full"></div>
         </motion.div>
         
         {/* Services Grid - First Row (3 cards) */}
@@ -136,7 +137,7 @@ const WhatDoWeServeSection: React.FC = () => {
                   {/* View Details Button - Top Right Corner - Always Visible */}
                   <a
                     href={service.link}
-                    className="absolute top-4 right-4 flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 group/button"
+                    className="absolute top-4 right-4 flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors duration-200 group/button font-sans"
                   >
                     <span>View Details</span>
                     <ArrowUpRight 

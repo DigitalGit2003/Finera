@@ -20,18 +20,19 @@ const HeroSection = () => (
           <div className="sm:text-center lg:text-left">
             {/* Main Heading */}
             <motion.h1 
-              className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
+              className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl font-sans"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               <span className="block xl:inline">Professional UK</span>{' '}
               <span className="block text-blue-600 xl:inline">Accounting & Taxation Services</span>
+              <span className="block text-blue-600 xl:inline font-extrabold">Accounting & Taxation Services</span>
             </motion.h1>
             
             {/* Tagline */}
             <motion.p 
-              className="mt-3 text-base text-blue-600 font-semibold uppercase tracking-wide sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+              className="mt-3 text-base text-blue-600 font-semibold uppercase tracking-wide sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 font-sans"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -41,7 +42,7 @@ const HeroSection = () => (
             
             {/* Description */}
             <motion.p 
-              className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+              className="mt-3 text-base text-gray-700 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 font-sans"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -59,7 +60,7 @@ const HeroSection = () => (
               <div className="rounded-md shadow">
                 <a
                   href="/contact"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-colors duration-200"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-colors duration-200 font-sans"
                 >
                   Get Started Today
                 </a>
@@ -67,7 +68,7 @@ const HeroSection = () => (
               <div className="mt-3 sm:mt-0 sm:ml-3">
                 <a
                   href="/services"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 md:py-4 md:text-lg md:px-10 transition-colors duration-200"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-semibold rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 md:py-4 md:text-lg md:px-10 transition-colors duration-200 font-sans"
                 >
                   Our Services
                 </a>

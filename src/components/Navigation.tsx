@@ -51,10 +51,10 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <div className="relative font-extrabold text-xl tracking-wider uppercase">
-              <span className="relative z-10 text-amber-700 px-8 py-3">
+              <span className="relative z-10 text-blue-600 px-8 py-3 font-extrabold font-sans">
                 FINERA GLOBAL
               </span>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(251,191,36,0.15)_70%,rgba(0,0,0,0)_100%)] blur-xl"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.10)_70%,rgba(251,191,36,0.10)_100%)] blur-xl"></div>
             </div>
           </Link>
           {/* <Link to="/" className="flex items-center">
@@ -81,8 +81,8 @@ const Navigation = () => {
                       variant="ghost"
                       className={`text-sm font-semibold tracking-wide transition-smooth px-3 py-2 rounded-md
                         ${isActive(item.path) || item.dropdownItems?.some(subItem => isActive(subItem.path))
-                          ? 'text-amber-700 border-b-2 border-amber-500 bg-amber-50'
-                          : 'text-neutral-800 hover:text-amber-700 hover:bg-amber-100'}
+                          ? 'text-blue-600 border-b-2 border-blue-500 bg-blue-50'
+                          : 'text-neutral-800 hover:text-blue-600 hover:bg-blue-100'}
                       `}
                     >
                       {item.label}
@@ -97,8 +97,8 @@ const Navigation = () => {
                             href={dropdownItem.path}
                             className={`w-full px-3 py-2 rounded transition-smooth ${
                               window.location.hash === dropdownItem.path.replace('/workflow', '')
-                                ? 'bg-amber-100 text-amber-700 font-semibold'
-                                : 'hover:bg-amber-50 hover:text-amber-700 text-neutral-800'
+                                ? 'bg-blue-100 text-blue-600 font-semibold'
+                                : 'hover:bg-blue-50 hover:text-blue-600 text-neutral-800'
                             }`}
                           >
                             {dropdownItem.label}
@@ -108,8 +108,8 @@ const Navigation = () => {
                             to={dropdownItem.path}
                             className={`w-full px-3 py-2 rounded transition-smooth ${
                               isActive(dropdownItem.path)
-                                ? 'bg-amber-100 text-amber-700 font-semibold'
-                                : 'hover:bg-amber-50 hover:text-amber-700 text-neutral-800'
+                                ? 'bg-blue-100 text-blue-600 font-semibold'
+                                : 'hover:bg-blue-50 hover:text-blue-600 text-neutral-800'
                             }`}
                           >
                             {dropdownItem.label}

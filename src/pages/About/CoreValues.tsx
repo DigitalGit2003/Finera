@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const CoreValuesSection: React.FC = () => {
   const coreValues = [
@@ -25,37 +26,50 @@ const CoreValuesSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Following Our Core VALUES
           </h2>
-          <div className="w-12 h-0.5 bg-blue-500 mx-auto mb-6"></div>
-          <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-medium">
+          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto mb-6 rounded-full"></div>
+          <p className="text-lg text-gray-700 leading-relaxed font-medium">
             Built on Integrity. Driven by Competency. Delivered with Accuracy. Defined by Excellence.
           </p>
-        </div>
+        </motion.div>
 
         {/* Core Values List */}
-        <div className="space-y-8">
+        <div className="space-y-6">
           {coreValues.map((value, index) => (
-            <div key={index} className="flex items-start space-x-6 p-6 bg-white rounded-lg shadow-sm">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                <span className="text-xl font-bold text-green-600">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="flex items-start space-x-6 p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+            >
+              <div className="flex-shrink-0 w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-2xl font-bold text-blue-600">
                   {value.letter}
                 </span>
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold text-gray-800 mb-3">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {value.title}
                 </h3>
-                <p className="text-base text-gray-600 leading-relaxed">
+                <p className="text-base text-gray-700 leading-relaxed">
                   {value.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
