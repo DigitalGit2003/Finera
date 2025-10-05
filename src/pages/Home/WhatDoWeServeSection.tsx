@@ -5,7 +5,8 @@ import {
   PieChart, 
   Calendar, 
   Receipt, 
-  Users 
+  Users,
+  ArrowUpRight
 } from 'lucide-react';
 
 const servicesOverview = [
@@ -13,31 +14,36 @@ const servicesOverview = [
     icon: Calculator,
     title: "Accounting & Bookkeeping",
     description: "Routine accounting, bookkeeping, reconciliations, and ledger management for businesses and firms.",
-    color: "bg-gradient-to-br from-blue-500 to-blue-600"
+    color: "bg-gradient-to-br from-blue-500 to-blue-600",
+    link: "/services/accounting-bookkeeping"
   },
   {
     icon: PieChart,
     title: "Management Accounting", 
     description: "Insightful management reports, KPIs, and cash flow analysis to drive strategic decisions.",
-    color: "bg-gradient-to-br from-emerald-500 to-emerald-600"
+    color: "bg-gradient-to-br from-emerald-500 to-emerald-600",
+    link: "/services/management-accounting"
   },
   {
     icon: Calendar,
     title: "Year-End Accounting",
     description: "Compliant year-end accounts, tax computations, and HMRC submissions for UK businesses.",
-    color: "bg-gradient-to-br from-orange-500 to-orange-600"
+    color: "bg-gradient-to-br from-orange-500 to-orange-600",
+    link: "/services/year-end-accounting"
   },
   {
     icon: Receipt,
     title: "VAT Return",
     description: "Accurate VAT calculations, returns, and compliance with Making Tax Digital (MTD) regulations.",
-    color: "bg-gradient-to-br from-purple-500 to-purple-600"
+    color: "bg-gradient-to-br from-purple-500 to-purple-600",
+    link: "/services/vat-return"
   },
   {
     icon: Users,
     title: "Payroll Management",
     description: "End-to-end payroll processing, payslips, RTI filing, and pension management for your team.",
-    color: "bg-gradient-to-br from-teal-500 to-teal-600"
+    color: "bg-gradient-to-br from-teal-500 to-teal-600",
+    link: "/services/payroll-management"
   }
 ];
 
@@ -76,14 +82,26 @@ const WhatDoWeServeSection: React.FC = () => {
                 <div className={`h-1 ${service.color}`}></div>
                 
                 {/* Content */}
-                <div className="p-8">
+                <div className="p-8 relative">
+                  {/* View Details Button - Top Right Corner - Always Visible */}
+                  <a
+                    href={service.link}
+                    className="absolute top-4 right-4 flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 group/button"
+                  >
+                    <span>View Details</span>
+                    <ArrowUpRight 
+                      size={18} 
+                      className="group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5 transition-transform duration-200" 
+                    />
+                  </a>
+
                   {/* Icon */}
                   <div className={`w-16 h-16 ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <service.icon className="text-white" size={28} />
                   </div>
                   
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight pr-8">
                     {service.title}
                   </h3>
                   
@@ -114,14 +132,26 @@ const WhatDoWeServeSection: React.FC = () => {
                 <div className={`h-1 ${service.color}`}></div>
                 
                 {/* Content */}
-                <div className="p-8">
+                <div className="p-8 relative">
+                  {/* View Details Button - Top Right Corner - Always Visible */}
+                  <a
+                    href={service.link}
+                    className="absolute top-4 right-4 flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 group/button"
+                  >
+                    <span>View Details</span>
+                    <ArrowUpRight 
+                      size={18} 
+                      className="group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5 transition-transform duration-200" 
+                    />
+                  </a>
+
                   {/* Icon */}
                   <div className={`w-16 h-16 ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <service.icon className="text-white" size={28} />
                   </div>
                   
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight pr-8">
                     {service.title}
                   </h3>
                   
