@@ -1,7 +1,7 @@
-
 import React from 'react';
 import WorkflowHero from './Workflow/WorkflowHero';
 import WorkMethodologyComponent from './Workflow/WorkMethodologyComponent';
+import WorkflowImage from './Workflow/WorkflowImage';
 
 const Workflow = () => {
   // Scroll to anchor if hash is present or changes
@@ -26,10 +26,12 @@ const Workflow = () => {
       window.removeEventListener('hashchange', scrollToHash);
     };
   }, []);
+
   return (
     <div>
       <WorkflowHero />
       <WorkMethodologyComponent />
+      <WorkflowImage />
     </div>
   );
 };
