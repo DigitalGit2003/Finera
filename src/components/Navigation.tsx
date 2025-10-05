@@ -32,7 +32,7 @@ const Navigation = () => {
     { path: '/engage-model', label: 'ENGAGE MODEL' },
       { 
         path: '/workflow', 
-        label: 'How We Work?',
+        label: 'HOW WE WORK?',
         hasDropdown: true,
         dropdownItems: [
           { path: '/workflow#workflow-section', label: 'Workflow' },

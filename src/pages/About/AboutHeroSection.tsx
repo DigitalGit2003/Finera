@@ -118,24 +118,12 @@ const AboutHeroSection: React.FC = () => (
           alt="Professional accounting team at Finera Global"
         />
         
-        {/* Floating stats */}
+        {/* "Trusted Partner" card - now at top-right */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="absolute top-6 right-6 bg-white rounded-lg shadow-lg px-6 py-4"
-        >
-          <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600">4+ Years</div>
-            <div className="text-xs font-normal text-gray-500">Supporting UK Firms</div>
-          </div>
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="absolute bottom-6 left-6 bg-white rounded-lg shadow-lg px-6 py-4"
         >
           <div className="flex items-center space-x-3">
             <div className="flex-shrink-0">
