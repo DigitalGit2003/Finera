@@ -6,22 +6,22 @@ const CoreValuesSection: React.FC = () => {
     {
       letter: 'I',
       title: 'Integrity',
-      description: 'Integrity is the foundation of our business. We act with accountability and uphold the highest ethical standards in all our financial services. Our integrity gives confidence to clients to rely on us not only for accurate financial services, but also for a trustworthy partnership built on ethics.'
+      description: 'The foundation of our business. We act with accountability and uphold the highest ethical standards in everything we do. Our clients trust us not just for accurate services, but also for a partnership grounded in ethics.'
     },
     {
       letter: 'A',
       title: 'Accuracy',
-      description: 'We believe that meticulous attention on every minor detail is essential for every aspect of accounting and tax services. Accuracy is not negotiable at our firm.'
+      description: 'Attention to detail is non-negotiable. Every figure, every report, and every return reflects our commitment to precision.'
     },
     {
       letter: 'C',
       title: 'Competency',
-      description: 'Competency is the cornerstone that gives shape to our excellence service. We always believe that competency is the root of every solution.'
+      description: 'We believe competency is the root of every solution. Our skilled team ensures that expertise shapes the quality of every service delivered.'
     },
     {
       letter: 'E',
       title: 'Excellence',
-      description: 'Excellence drives everything we do. We never settle for "good enough." Our aim is to consistently deliver outstanding results that exceed client expectations and set new industry standards.'
+      description: 'We don’t settle for “good enough.” Excellence drives us to consistently meet and exceed client expectations.'
     }
   ];
 

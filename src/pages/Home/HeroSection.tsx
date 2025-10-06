@@ -26,13 +26,12 @@ const HeroSection = () => (
               transition={{ duration: 0.6 }}
             >
               <span className="block xl:inline">Professional UK</span>{' '}
-              <span className="block text-blue-600 xl:inline">Accounting & Taxation Services</span>
               <span className="block text-blue-600 xl:inline font-extrabold">Accounting & Taxation Services</span>
             </motion.h1>
             
             {/* Tagline */}
             <motion.p 
-              className="mt-3 text-base text-blue-600 font-semibold uppercase tracking-wide sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 font-sans"
+              className="mt-3 text-base text-green-600 font-semibold uppercase tracking-wide sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 font-sans"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -47,7 +46,15 @@ const HeroSection = () => (
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Finera Global provides outsourced accounting and taxation services to UK accountancy practices and businesses. We act as an extension of your team, ensuring accuracy, compliance, and efficiency.
+              Finera Global provides outsourced accounting and taxation services to UK accountancy practices and businesses. We serve Practicing Accountants, Start-ups, and SMEs, helping them reduce costs, improve operations, and unlock capacity to scale. We act as an extension of your team, ensuring accuracy, compliance, and efficiency while reducing costs and freeing your time to focus on clients.
+            </motion.p>
+            <motion.p
+            className="mt-3 text-base text-gray-700 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 font-sans"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Partner with Finera Global today and focus on what you do best.  
             </motion.p>
             
             {/* CTA Buttons */}

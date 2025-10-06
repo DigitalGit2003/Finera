@@ -4,35 +4,6 @@ import { motion } from 'framer-motion';
 const AboutMainSection: React.FC = () => (
   <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
     <div className="max-w-5xl mx-auto">
-      {/* Main Heading */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-          Empowering UK Businesses with Expert Accounting Solutions
-        </h2>
-        <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto rounded-full"></div>
-      </motion.div>
-
-      {/* Main Description */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
-          With a strong knowledge of UK accounting, we provide high-quality, efficient services that allow businesses to focus on their core activities. 
-          Our dedicated team of professionals seamlessly supports your accounting needs, offering services from bookkeeping and VAT management 
-          to comprehensive tax planning and payroll solutions.
-        </p>
-      </motion.div>
-
       {/* Mission and Vision */}
       <div className="grid md:grid-cols-2 gap-8">
         {/* Mission */}

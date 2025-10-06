@@ -36,15 +36,19 @@ const AboutHeroSection: React.FC = () => (
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <p>
-                Finera Global was founded with a simple vision: to support UK accountancy practices with 
-                reliable and efficient outsourced accounting and taxation services. We understand the 
-                challenges firms face in balancing accuracy, compliance, and client service.
+                Finera Global was founded with a simple vision: to support UK accountancy practices with reliable and efficient outsourced accounting and taxation services. We understand the challenges firms face in balancing accuracy, compliance, and client service, and we built our model to help practices overcome those challenges with ease.
               </p>
               
               <p>
-                What sets us apart is our commitment to working as true partners. We integrate with your 
-                systems, adapt to your workflows, and deliver the back-office support you need to run 
-                smoothly and scale confidently.
+                What sets us apart is our commitment to working as true partners. We don’t just process numbers—we integrate with your systems, adapt to your workflows, and deliver the back-office support you need to run smoothly and scale confidently.
+              </p>
+
+              <p>
+                Our team is skilled in bookkeeping, year-end accounting, VAT, management reporting, payroll, and tax compliance, with hands-on experience across leading platforms like Xero, QuickBooks, Sage, and more. By combining expertise, technology, and client-first values, we deliver services that are consistent, precise, and tailored to your practice.
+              </p>
+
+              <p>
+                At Finera Global, integrity, accuracy, and excellence are at the heart of everything we do. Our goal is simple: to give UK accountancy firms the space to focus on their clients while we take care of the numbers.
               </p>
             </motion.div>
             
