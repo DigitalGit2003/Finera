@@ -30,7 +30,7 @@ const AboutHeroSection: React.FC = () => (
             
             {/* Description Paragraphs */}
             <motion.div 
-              className="mt-3 text-base font-normal text-gray-700 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 space-y-4"
+              className="mt-3 text-base font-normal text-gray-700 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 space-y-4 text-justify"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
