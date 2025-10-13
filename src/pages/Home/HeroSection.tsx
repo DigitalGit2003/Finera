@@ -69,7 +69,7 @@ const HeroSection = () => (
                   href="/contact"
                   className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-colors duration-200 font-sans"
                 >
-                  Get Started Today
+                  Contact Us
                 </a>
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
@@ -79,33 +79,6 @@ const HeroSection = () => (
                 >
                   Our Services
                 </a>
-              </div>
-            </motion.div>
-            
-            {/* Trust Indicators */}
-            <motion.div 
-              className="mt-6 flex flex-wrap gap-6 sm:justify-center lg:justify-start"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <div className="flex items-center text-sm text-gray-500">
-                <svg className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400" fill="none" viewBox="0 0 20 20">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                UK & USA Accountants
-              </div>
-              <div className="flex items-center text-sm text-gray-500">
-                <svg className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400" fill="none" viewBox="0 0 20 20">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                ACCA & CPA Certified
-              </div>
-              <div className="flex items-center text-sm text-gray-500">
-                <svg className="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400" fill="none" viewBox="0 0 20 20">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                Secure & Compliant
               </div>
             </motion.div>
           </div>
@@ -126,38 +99,6 @@ const HeroSection = () => (
           src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
           alt="Professional accounting team at work"
         />
-        
-        {/* Floating stats - simplified and cleaner */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="absolute top-6 right-6 bg-white rounded-lg shadow-lg px-6 py-4"
-        >
-          <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600">500+</div>
-            <div className="text-xs text-gray-500">Clients Served</div>
-          </div>
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="absolute bottom-6 left-6 bg-white rounded-lg shadow-lg px-6 py-4"
-        >
-          <div className="flex items-center space-x-3">
-            <div className="flex-shrink-0">
-              <svg className="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div>
-              <div className="text-lg font-semibold text-gray-900">100%</div>
-              <div className="text-xs text-gray-500">Client Satisfaction</div>
-            </div>
-          </div>
-        </motion.div>
       </motion.div>
     </div>
   </section>

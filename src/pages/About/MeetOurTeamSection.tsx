@@ -57,33 +57,14 @@ const MeetOurTeamSection: React.FC = () => {
                     Nilay B. Mavani
                   </h3>
                   <p className="text-base text-gray-700 leading-relaxed mb-6 text-justify">
-                    As a CA Finalist and the Founder of Finera Global, Nilay brings over four years 
-                    of invaluable experience in accounting, taxation, audit, and financial reporting. 
-                    His unique combination of technical expertise and practical understanding of 
-                    international accounting requirements has been instrumental in shaping our services.
+                    Nilay B. Mavani is a CA Finalist and the Founder of Finera Global. With over four years of experience in accounting, taxation, audit, and financial reporting, he brings both strong technical expertise and a practical understanding of international accounting requirements.
                   </p>
                   <p className="text-base text-gray-700 leading-relaxed mb-6 text-justify">
-                    His vision for Finera Global was born from recognizing the need to bridge the gap 
-                    for UK accountancy practices. By leveraging leading tools such as QuickBooks, Xero, 
-                    Hubdoc, Dext, and IRIS Elements, we ensure precision, seamless workflows, and 
-                    consistent quality in all our operations.
+                    Nilay founded Finera Global with the vision of bridging the gap for UK accountancy practices by offering specialized, efficient, and reliable back-office support. By leveraging leading tools such as QuickBooks, Xero, Hubdoc, Dext, IRIS Elements & more, Finera Global ensures precision, seamless workflows, and consistent quality.
                   </p>
-                  
-                  {/* Credentials List */}
-                  <div className="space-y-4 mt-8">
-                    <div className="flex items-center justify-center md:justify-start text-base text-gray-700">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 flex-shrink-0"></div>
-                      <span>CA Finalist with 4+ years of expertise</span>
-                    </div>
-                    <div className="flex items-center justify-center md:justify-start text-base text-gray-700">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 flex-shrink-0"></div>
-                      <span>Expert in leading accounting software</span>
-                    </div>
-                    <div className="flex items-center justify-center md:justify-start text-base text-gray-700">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 flex-shrink-0"></div>
-                      <span>Focus on building long-term partnerships</span>
-                    </div>
-                  </div>
+                  <p className="text-base text-gray-700 leading-relaxed mb-6 text-justify">
+                    His focus is on building long-term partnerships rooted in trust, quality, and process-driven service delivery—helping UK accountancy practices scale without compromising on accuracy or compliance.
+                  </p>
                 </div>
               </div>
             </div>

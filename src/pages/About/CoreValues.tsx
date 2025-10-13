@@ -37,7 +37,7 @@ const CoreValuesSection: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Following Our Core VALUES
+            Following Our Core Values
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto mb-6 rounded-full"></div>
           <p className="text-lg text-gray-700 leading-relaxed font-medium">

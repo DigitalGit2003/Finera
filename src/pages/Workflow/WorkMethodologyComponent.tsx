@@ -62,8 +62,7 @@ const WorkMethodologyComponent: React.FC = () => {
           description: 'The key feature of this method is our commitment that no data is downloaded into our internal system, ensuring your financial information stays exactly where you want it.',
           icon: <ShieldCheckIcon className="w-5 h-5" />
         }
-      ],
-      highlight: 'Maximum Data Control'
+      ]
     }
   ];
 
@@ -121,15 +120,6 @@ const WorkMethodologyComponent: React.FC = () => {
                 <p className="text-gray-600 leading-relaxed">
                   {method.description}
                 </p>
-
-                {method.highlight && (
-                  <div className="mt-3">
-                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-green-700 bg-green-100 px-3 py-1 rounded-full">
-                      <ShieldCheckIcon className="w-4 h-4" />
-                      {method.highlight}
-                    </span>
-                  </div>
-                )}
               </div>
 
               {/* Method Steps */}

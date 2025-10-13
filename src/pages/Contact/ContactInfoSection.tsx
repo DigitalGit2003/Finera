@@ -33,26 +33,12 @@ const ContactInfoSection: React.FC = () => {
                       rel="noopener noreferrer"
                       className="text-gray-700 hover:text-blue-600 transition-colors"
                     >
-                      Shop No.1, Ground floor,<br/>
-                      opp dharmajivan Soc, Chikuwadi,<br/>
-                      Surat - 394101
+                      Shop No. 1, Opp Dharmajivan jivan Soc,<br/>
+                      Chikuwadi, Surat, Gujarat, India - 395006
                     </a>
                   </div>
                 </div>
-
-                {/* Office Timing */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-900 mb-1">Office Timing</h3>
-                    <p className="text-gray-700">Monday – Saturday 10AM to 7PM</p>
-                    <p className="text-gray-700">Sunday Closed</p>
-                  </div>
-                </div>
+                <br/>
 
                 {/* Email */}
                 <div className="flex items-start gap-4">
@@ -71,6 +57,7 @@ const ContactInfoSection: React.FC = () => {
                     </a>
                   </div>
                 </div>
+                <br/>
 
                 {/* Phone */}
                 <div className="flex items-start gap-4">
