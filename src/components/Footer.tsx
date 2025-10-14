@@ -1,7 +1,20 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Phone, Mail, Linkedin } from 'lucide-react';
 
 const Footer: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleHashLink = (path: string, hash: string) => {
+    navigate(path);
+    setTimeout(() => {
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <footer className="bg-slate-800 text-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -24,7 +37,7 @@ const Footer: React.FC = () => {
               {/* Tagline */}
               <p className="text-lg italic text-gray-300 mb-6">Empowering Your Financial Growth</p>
               
-              {/* Social Icons */}
+              {/* Social Icons - Keep as <a> for external links */}
               <div className="flex space-x-4">
                 <a 
                   href="tel:+919999999999" 
@@ -41,7 +54,9 @@ const Footer: React.FC = () => {
                   <Mail size={20} className="text-white" />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://linkedin.com/company/finera-global" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-blue-600 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors duration-300"
                   aria-label="LinkedIn"
                 >
@@ -56,19 +71,25 @@ const Footer: React.FC = () => {
             <h4 className="text-xl font-semibold mb-6 text-white">About Us</h4>
             <ul className="space-y-3">
               <li>
-                <a href="/about" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <Link to="/about" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   About Finera
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/about#vision" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <button
+                  onClick={() => handleHashLink('/about', 'vision')}
+                  className="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-left"
+                >
                   Vision
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/about#core-values" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <button
+                  onClick={() => handleHashLink('/about', 'core-values')}
+                  className="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-left"
+                >
                   Core Values
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -78,29 +99,29 @@ const Footer: React.FC = () => {
             <h4 className="text-xl font-semibold mb-6 text-white">Our Services</h4>
             <ul className="space-y-3">
               <li>
-                <a href="/services/accounting-bookkeeping" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <Link to="/services/accounting-bookkeeping" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   Accounting & Bookkeeping
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services/management-accounting" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <Link to="/services/management-accounting" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   Management Accounting
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services/year-end-accounting" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <Link to="/services/year-end-accounting" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   Year-End Accounting
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services/VAT-return" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <Link to="/services/VAT-return" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   VAT Return
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services/payroll-management" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <Link to="/services/payroll-management" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   Payroll Management
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

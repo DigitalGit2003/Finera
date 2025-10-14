@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   Calculator, 
   PieChart, 
@@ -51,7 +52,7 @@ const WhatDoWeServeSection: React.FC = () => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header - matching Why Choose Us styling */}
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +64,7 @@ const WhatDoWeServeSection: React.FC = () => {
             What Do We Serve?
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-amber-500 mx-auto rounded-full"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-amber-500 mx-auto rounded-full"></div>
         </motion.div>
         
         {/* Services Grid - First Row (3 cards) */}
@@ -84,9 +85,9 @@ const WhatDoWeServeSection: React.FC = () => {
                 
                 {/* Content */}
                 <div className="p-8 relative">
-                  {/* View Details Button - Top Right Corner - Always Visible */}
-                  <a
-                    href={service.link}
+                  {/* View Details Button - FIXED: Changed <a> to <Link> */}
+                  <Link
+                    to={service.link}
                     className="absolute top-4 right-4 flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 group/button"
                   >
                     <span>View Details</span>
@@ -94,7 +95,7 @@ const WhatDoWeServeSection: React.FC = () => {
                       size={18} 
                       className="group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5 transition-transform duration-200" 
                     />
-                  </a>
+                  </Link>
 
                   {/* Icon */}
                   <div className={`w-16 h-16 ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -134,9 +135,9 @@ const WhatDoWeServeSection: React.FC = () => {
                 
                 {/* Content */}
                 <div className="p-8 relative">
-                  {/* View Details Button - Top Right Corner - Always Visible */}
-                  <a
-                    href={service.link}
+                  {/* View Details Button - FIXED: Changed <a> to <Link> */}
+                  <Link
+                    to={service.link}
                     className="absolute top-4 right-4 flex items-center gap-1 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors duration-200 group/button font-sans"
                   >
                     <span>View Details</span>
@@ -144,7 +145,7 @@ const WhatDoWeServeSection: React.FC = () => {
                       size={18} 
                       className="group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5 transition-transform duration-200" 
                     />
-                  </a>
+                  </Link>
 
                   {/* Icon */}
                   <div className={`w-16 h-16 ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>

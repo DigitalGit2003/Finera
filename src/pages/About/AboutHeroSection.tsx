@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const AboutHeroSection: React.FC = () => (
   <section className="relative bg-white overflow-hidden">
@@ -40,7 +41,7 @@ const AboutHeroSection: React.FC = () => (
               </p>
               
               <p>
-                What sets us apart is our commitment to working as true partners. We don’t just process numbers—we integrate with your systems, adapt to your workflows, and deliver the back-office support you need to run smoothly and scale confidently.
+                What sets us apart is our commitment to working as true partners. We don't just process numbers—we integrate with your systems, adapt to your workflows, and deliver the back-office support you need to run smoothly and scale confidently.
               </p>
 
               <p>
@@ -52,7 +53,7 @@ const AboutHeroSection: React.FC = () => (
               </p>
             </motion.div>
             
-            {/* CTA Buttons */}
+            {/* CTA Buttons - FIXED: Changed <a> to <Link> */}
             <motion.div 
               className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
@@ -60,20 +61,20 @@ const AboutHeroSection: React.FC = () => (
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <div className="rounded-md shadow">
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-colors duration-200"
                 >
                   Contact Us
-                </a>
+                </Link>
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
-                <a
-                  href="/services"
+                <Link
+                  to="/services"
                   className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 md:py-4 md:text-lg md:px-10 transition-colors duration-200"
                 >
                   Our Services
-                </a>
+                </Link>
               </div>
             </motion.div>
           </div>

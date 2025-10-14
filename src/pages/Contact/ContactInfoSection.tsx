@@ -17,7 +17,7 @@ const ContactInfoSection: React.FC = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-8">Visit us anytime</h2>
               
               <div className="space-y-6">
-                {/* Office */}
+                {/* Office - External link, keep as <a> */}
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,7 +40,7 @@ const ContactInfoSection: React.FC = () => {
                 </div>
                 <br/>
 
-                {/* Email */}
+                {/* Email - External link, keep as <a> but fix formatting */}
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,7 +59,7 @@ const ContactInfoSection: React.FC = () => {
                 </div>
                 <br/>
 
-                {/* Phone */}
+                {/* Phone - External link, keep as <a> */}
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
