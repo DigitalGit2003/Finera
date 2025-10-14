@@ -22,7 +22,8 @@ const ContactSection: React.FC = () => {
     setStatus('');
 
     try {
-      const response = await fetch('http://localhost:5001/api/contact', {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
+      const response = await fetch(`${baseUrl}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

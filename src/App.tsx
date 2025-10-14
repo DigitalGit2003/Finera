@@ -19,7 +19,6 @@ import ManagementAccounting from "./pages/services/ManagementAccounting";
 import PayrollManagement from "./pages/services/PayrollManagement";
 import VATReturn from "./pages/services/VATReturn";
 import YearEndAccounting from "./pages/services/YearEndAccounting";
-// import AccountsReceivable from "./pages/services/AccountsReceivable";
 
 const queryClient = new QueryClient();
 

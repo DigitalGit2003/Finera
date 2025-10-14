@@ -72,3 +72,24 @@ To connect a domain, navigate to Project > Settings > Domains and click Connect 
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
 
+## Environment variables
+
+Create these files before running builds or deploying:
+
+```
+# backend/.env
+NODE_ENV=production
+PORT=5000
+MONGO_URI=your-production-mongodb-uri
+# Comma-separated list of allowed frontend origins
+CORS_ORIGINS=https://your-frontend-domain
+
+# Root .env.production (Vite)
+VITE_API_BASE_URL=https://your-backend-domain
+
+# Root .env.development (Vite, optional)
+VITE_API_BASE_URL=http://localhost:5000
+```
+
+The backend reads `CORS_ORIGINS` as a comma-separated list of allowed origins.
+
