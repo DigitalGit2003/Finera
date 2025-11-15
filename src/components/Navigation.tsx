@@ -50,26 +50,20 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <div className="relative font-extrabold text-xl tracking-wider uppercase">
-              <span className="relative z-10 text-blue-600 px-8 py-3 font-extrabold font-sans">
+            <div className="flex items-center space-x-3 px-[1px] py-[1px] max-w-max">
+              <img
+              src="/FineraLogo.jpg"
+              alt="Finera Global logo"
+              className="h-14 md:h-16 lg:h-16 w-auto object-contain"
+              />
+              <div className="relative">
+              <span className="text-blue-600 font-extrabold text-lg md:text-xl lg:text-2xl tracking-wider uppercase leading-none">
                 FINERA GLOBAL
               </span>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.10)_70%,rgba(251,191,36,0.10)_100%)] blur-xl"></div>
+              <div className="absolute inset-0 -z-10 rounded bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.07)_60%,rgba(251,191,36,0.05)_100%)] blur-sm"></div>
+              </div>
             </div>
           </Link>
-          {/* <Link to="/" className="flex items-center">
-            <div className="relative font-extrabold text-xl tracking-wider uppercase">
-              
-              <span className="relative z-10 text-black px-8 py-3 rounded-xl 
-                              bg-gradient-to-r from-amber-500 to-yellow-700">
-                FINERA GLOBAL
-              </span>
-              
-              <div className="absolute inset-0 rounded-2xl 
-                              bg-gradient-to-r from-amber-600/40 to-yellow-800/40 
-                              blur-2xl"></div>
-            </div>
-          </Link> */}
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">

@@ -25,12 +25,15 @@ const Footer: React.FC = () => {
             <div className="mb-6">
               {/* Logo */}
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mr-3">
-                  <span className="text-slate-800 font-bold text-xl">F</span>
+                <div className="w-12 h-12 rounded-full overflow-hidden mr-3">
+                  <img
+                    src="/FineraLogo.jpg"
+                    alt="Finera Global Logo"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">Finera</h3>
-                  <p className="text-sm text-blue-400 font-medium">GLOBAL</p>
+                  <h3 className="text-2xl font-bold text-white">Finera Global</h3>
                 </div>
               </div>
               
@@ -40,7 +43,7 @@ const Footer: React.FC = () => {
               {/* Social Icons - Keep as <a> for external links */}
               <div className="flex space-x-4">
                 <a 
-                  href="tel:+919999999999" 
+                  href="tel:+918153056548" 
                   className="w-10 h-10 bg-blue-600 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors duration-300"
                   aria-label="Phone"
                 >
@@ -54,7 +57,7 @@ const Footer: React.FC = () => {
                   <Mail size={20} className="text-white" />
                 </a>
                 <a 
-                  href="https://linkedin.com/company/finera-global" 
+                  href="https://www.linkedin.com/company/fineraglobal/" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-blue-600 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors duration-300"
@@ -140,14 +143,14 @@ const Footer: React.FC = () => {
               </div>
               <div>
                 <a 
-                  href="tel:+919999999999" 
+                  href="tel:+918153056548" 
                   className="text-gray-300 hover:text-blue-400 transition-colors duration-300 block"
                 >
-                  +91 99999 99999
+                  +91 81530 56548
                 </a>
               </div>
               <div className="text-gray-300 leading-relaxed">
-                123, Finera Business Park, Main Road,<br />Mumbai, India
+                Shop No. 1, Opp Dharmajivan jivan Soc, Chikuwadi, Surat, Gujarat, India - 395006
               </div>
             </div>
           </div>

@@ -26,7 +26,7 @@ const HeroSection = () => (
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="block xl:inline">Professional UK</span>{' '}
+              <span className="block text-blue-600 xl:inline font-extrabold">Professional UK</span>{' '}
               <span className="block text-blue-600 xl:inline font-extrabold">Accounting & Taxation Services</span>
             </motion.h1>
             
