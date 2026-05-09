@@ -36,12 +36,13 @@ const MeetOurTeamSection: React.FC = () => {
               {/* Profile Image */}
               <div className="flex-shrink-0 p-6 md:p-8 flex items-center">
                 <div className="relative mx-auto">
-                  <div className="w-48 h-56 md:w-[300px] md:h-[380px] relative overflow-hidden rounded-2xl">
+                  <div className="w-48 h-72 md:w-[320px] md:h-[480px] overflow-hidden rounded-2xl">
                     <img
-                      src="/founder.jpeg"
-                      alt="Nilay B. Mavani"
-                      className="object-cover w-full h-full shadow-xl transition-transform duration-300 hover:scale-105"
+                      src="/Profile.png"
+                      alt="C.A. Nilay B. Mavani"
+                      className="w-full h-full object-cover object-top shadow-xl transition-transform duration-300 hover:scale-105"
                     />
+
                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
                   </div>
                 </div>
@@ -54,10 +55,10 @@ const MeetOurTeamSection: React.FC = () => {
                     FOUNDING MEMBER
                   </span>
                   <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                    Nilay B. Mavani
+                    C.A. Nilay B. Mavani
                   </h3>
                   <p className="text-base text-gray-700 leading-relaxed mb-6 text-justify">
-                    Nilay B. Mavani is a CA Finalist and the Founder of Finera Global. With over four years of experience in accounting, taxation, audit, and financial reporting, he brings both strong technical expertise and a practical understanding of international accounting requirements.
+                    Nilay is a qualified Chartered Accountant and the founder of Finera Global. With over four years of experience in accounting, taxation, audit, and financial reporting, he brings both strong technical expertise and a practical understanding of international accounting requirements.
                   </p>
                   <p className="text-base text-gray-700 leading-relaxed mb-6 text-justify">
                     Nilay founded Finera Global with the vision of bridging the gap for UK accountancy practices by offering specialized, efficient, and reliable back-office support. By leveraging leading tools such as QuickBooks, Xero, Hubdoc, Dext, IRIS Elements & more, Finera Global ensures precision, seamless workflows, and consistent quality.
