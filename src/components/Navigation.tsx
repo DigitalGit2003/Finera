@@ -11,6 +11,7 @@ import {
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openMobileDropdowns, setOpenMobileDropdowns] = useState<Record<string, boolean>>({});
   const location = useLocation();
 
   const navItems = [
@@ -43,6 +44,9 @@ const Navigation = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
+  const toggleMobileDropdown = (path: string) => {
+    setOpenMobileDropdowns((prev) => ({ ...prev, [path]: !prev[path] }));
+  };
 
   return (
   <nav className="bg-white border-b border-amber-400 shadow-elegant sticky top-0 z-50 backdrop-blur-sm font-sans">
@@ -150,40 +154,51 @@ const Navigation = () => {
               {navItems.map((item) => (
                 item.hasDropdown ? (
                   <div key={item.path}>
-                    <div className="px-3 py-2 text-sm font-semibold tracking-wide text-amber-700">
-                      {item.label}
-                    </div>
-                    <div className="ml-4 space-y-1">
-                      {item.dropdownItems?.map((dropdownItem) => (
-                        dropdownItem.path.startsWith('/workflow#') ? (
-                          <a
-                            key={dropdownItem.path}
-                            href={dropdownItem.path}
-                            className={`block px-3 py-2 text-sm font-semibold tracking-wide rounded transition-smooth ${
-                              window.location.hash === dropdownItem.path.replace('/workflow', '')
-                                ? 'text-amber-700 bg-amber-100'
-                                : 'text-neutral-800 hover:text-amber-700 hover:bg-amber-100'
-                            }`}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {dropdownItem.label}
-                          </a>
-                        ) : (
-                          <Link
-                            key={dropdownItem.path}
-                            to={dropdownItem.path}
-                            className={`block px-3 py-2 text-sm font-semibold tracking-wide rounded transition-smooth ${
-                              isActive(dropdownItem.path)
-                                ? 'text-amber-700 bg-amber-100'
-                                : 'text-neutral-800 hover:text-amber-700 hover:bg-amber-100'
-                            }`}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {dropdownItem.label}
-                          </Link>
-                        )
-                      ))}
-                    </div>
+                    <button
+                      type="button"
+                      onClick={() => toggleMobileDropdown(item.path)}
+                      className="w-full flex items-center justify-between px-3 py-2 text-sm font-semibold tracking-wide text-amber-700 rounded hover:bg-amber-50"
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform duration-200 ${
+                          openMobileDropdowns[item.path] ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    {openMobileDropdowns[item.path] && (
+                      <div className="ml-4 mt-1 space-y-1">
+                        {item.dropdownItems?.map((dropdownItem) => (
+                          dropdownItem.path.startsWith('/workflow#') ? (
+                            <a
+                              key={dropdownItem.path}
+                              href={dropdownItem.path}
+                              className={`block px-3 py-2 text-sm font-semibold tracking-wide rounded transition-smooth ${
+                                window.location.hash === dropdownItem.path.replace('/workflow', '')
+                                  ? 'text-amber-700 bg-amber-100'
+                                  : 'text-neutral-800 hover:text-amber-700 hover:bg-amber-100'
+                              }`}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {dropdownItem.label}
+                            </a>
+                          ) : (
+                            <Link
+                              key={dropdownItem.path}
+                              to={dropdownItem.path}
+                              className={`block px-3 py-2 text-sm font-semibold tracking-wide rounded transition-smooth ${
+                                isActive(dropdownItem.path)
+                                  ? 'text-amber-700 bg-amber-100'
+                                  : 'text-neutral-800 hover:text-amber-700 hover:bg-amber-100'
+                              }`}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {dropdownItem.label}
+                            </Link>
+                          )
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <Link

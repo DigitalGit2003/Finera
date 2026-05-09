@@ -7,8 +7,8 @@ const EngageModelPage: React.FC = () => {
   return (
     <div className="bg-white">
       <FlexibilitySection />
-      <CustomisableModelsSection />
       <EngagementModelsSection />
+      <CustomisableModelsSection />
     </div>
   );
 };

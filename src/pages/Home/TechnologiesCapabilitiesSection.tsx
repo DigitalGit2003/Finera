@@ -1,18 +1,19 @@
 import Slider from "react-slick";
 
 const technologies = [
-  { name: "Sage", img: "/tech1.jpg" },
-  { name: "Xero", img: "/tech2.jpg" },
-  { name: "FreshBooks", img: "/tech3.jpg" },
-  { name: "TaxCal", img: "/tech4.jpg" },
-  { name: "Hubdoc", img: "/tech5.jpg" },
-  { name: "QuickBooks", img: "/tech6.jpg" },
-  { name: "FreeAgent", img: "/tech7.jpg" },
-  { name: "IRIS", img: "/tech8.jpg" },
-  { name: "Moneysoft", img: "/tech9.jpg" },
-  { name: "BrightPay", img: "/tech10.jpg" },
-  { name: "AutoEntry", img: "/tech11.jpg" },
+  { name: "Sage", img: "/Sage.png" },
+  { name: "Xero", img: "/Xero.png" },
+  { name: "FreshBooks", img: "/FreshBooks.png" },
+  { name: "TaxCal", img: "/TaxCal.png" },
+  { name: "Hubdoc", img: "/Hubdoc.png" },
+  { name: "QuickBooks", img: "/Quickbooks.png" },
+  { name: "FreeAgent", img: "/Freeagent.png" },
+  { name: "IRIS", img: "/Iris.png" },
+  { name: "Moneysoft", img: "/Moneysoft.png" },
+  { name: "BrightPay", img: "/BrightPay.png" }, 
+  { name: "AutoEntry", img: "/AutoEntryBySage.png" },
   { name: "Dext", img: "/tech12.jpg" },
+  { name: "Zoho Books", img: "/Zohobooks.png" },
 ];
 
 const settings = {

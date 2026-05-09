@@ -60,7 +60,7 @@ const WorkflowComponent: React.FC<WorkflowProps> = ({
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          How We Work?
+          Workflow
         </h1>
         <p className="text-gray-600">Follow our structured process to ensure quality service delivery</p>
       </div>

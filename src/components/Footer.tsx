@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
               </div>
               
               {/* Tagline */}
-              <p className="text-lg italic text-gray-300 mb-6">Empowering Your Financial Growth</p>
+              <p className="text-lg italic text-gray-300 mb-6">Reliable Accounting & Taxation, Built to Scale</p>
               
               {/* Social Icons - Keep as <a> for external links */}
               <div className="flex space-x-4">
@@ -159,7 +159,7 @@ const Footer: React.FC = () => {
         {/* Bottom Copyright Section */}
         <div className="mt-12 pt-8 border-t border-slate-700 text-center">
           <p className="text-gray-300">
-            Finera Global © 2025. All Rights Reserved.
+            Finera Global © 2026. All Rights Reserved.
           </p>
         </div>
       </div>
