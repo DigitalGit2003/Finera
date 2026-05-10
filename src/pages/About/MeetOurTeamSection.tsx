@@ -39,7 +39,7 @@ const MeetOurTeamSection: React.FC = () => {
                   <div className="w-48 h-72 md:w-[320px] md:h-[480px] overflow-hidden rounded-2xl">
                     <img
                       src="/Profile.png"
-                      alt="C.A. Nilay B. Mavani"
+                      alt="CA Nilay B."
                       className="w-full h-full object-cover object-top shadow-xl transition-transform duration-300 hover:scale-105"
                     />
 
