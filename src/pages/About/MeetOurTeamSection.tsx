@@ -55,7 +55,7 @@ const MeetOurTeamSection: React.FC = () => {
                     FOUNDING MEMBER
                   </span>
                   <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                    C.A. Nilay B. Mavani
+                    CA Nilay B.
                   </h3>
                   <p className="text-base text-gray-700 leading-relaxed mb-6 text-justify">
                     Nilay is a qualified Chartered Accountant and the founder of Finera Global. With over four years of experience in accounting, taxation, audit, and financial reporting, he brings both strong technical expertise and a practical understanding of international accounting requirements.
