@@ -102,12 +102,15 @@ function createTransporter() {
   });
 }
 
-function isFormSubmitSuccess(result) {
-  // FormSubmit returns success as a string: "true" | "false"
-  return result?.success === true || result?.success === 'true';
-}
+async function sendContactEmail({ firstName, lastName, email, service, message }) {
+  const transporter = createTransporter();
+  if (!transporter) {
+    throw new Error(
+      'SMTP is not configured. Set SMTP_HOST, SMTP_USER, and SMTP_PASS on the server. ' +
+        'FormSubmit cannot be used from Render (blocked by Cloudflare).'
+    );
+  }
 
-async function sendContactEmail({ firstName, lastName, email, service, message, origin }) {
   const subject = `New consultation request from ${firstName} ${lastName}`;
   const text = [
     'New Free Consultation Request',
@@ -129,61 +132,15 @@ async function sendContactEmail({ firstName, lastName, email, service, message, 
     <p>${String(message).replace(/\n/g, '<br>')}</p>
   `;
 
-  const transporter = createTransporter();
-
-  if (transporter) {
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || process.env.SMTP_USER || CONTACT_TO,
-      to: CONTACT_TO,
-      replyTo: email,
-      subject,
-      text,
-      html,
-    });
-    console.log(`✅ Email sent via SMTP to ${CONTACT_TO}`);
-    return;
-  }
-
-  // Fallback when SMTP is not configured.
-  // FormSubmit expects a browser Origin/Referer — forward the client's origin.
-  const siteOrigin = origin || allowedOrigins[0] || 'http://localhost:3000';
-  const response = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(CONTACT_TO), {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Origin: siteOrigin,
-      Referer: `${siteOrigin}/`,
-    },
-    body: JSON.stringify({
-      name: `${firstName} ${lastName}`,
-      email,
-      service: service || 'Not specified',
-      message,
-      _subject: subject,
-      _template: 'table',
-      _captcha: 'false',
-    }),
+  await transporter.sendMail({
+    from: process.env.SMTP_FROM || process.env.SMTP_USER || CONTACT_TO,
+    to: CONTACT_TO,
+    replyTo: email,
+    subject,
+    text,
+    html,
   });
-
-  const rawBody = await response.text();
-  let result;
-  try {
-    result = JSON.parse(rawBody);
-  } catch {
-    throw new Error(`FormSubmit returned non-JSON (${response.status}): ${rawBody}`);
-  }
-
-  console.log('FormSubmit status:', response.status, result);
-
-  if (!response.ok || !isFormSubmitSuccess(result)) {
-    const detail = result?.message || rawBody || 'Unknown FormSubmit error';
-    throw new Error(
-      `FormSubmit failed: ${detail}. Configure SMTP_* in backend/.env for reliable email delivery.`
-    );
-  }
-
-  console.log(`✅ Email sent via FormSubmit to ${CONTACT_TO}`);
+  console.log(`✅ Email sent via SMTP to ${CONTACT_TO}`);
 }
 
 app.use((req, res, next) => {
@@ -199,7 +156,7 @@ app.get('/api/health', (req, res) => {
     status: 'Server is running',
     timestamp: new Date().toISOString(),
     mongodb: mongoReady ? 'connected' : 'disconnected',
-    email: createTransporter() ? 'smtp' : 'formsubmit-fallback',
+    email: createTransporter() ? 'smtp' : 'not-configured',
     allowedOrigins,
   });
 });
@@ -216,14 +173,7 @@ app.post('/api/contact', async (req, res) => {
       });
     }
 
-    await sendContactEmail({
-      firstName,
-      lastName,
-      email,
-      service,
-      message,
-      origin: req.headers.origin,
-    });
+    await sendContactEmail({ firstName, lastName, email, service, message });
 
     let id = null;
     if (mongoReady) {
@@ -267,8 +217,7 @@ const server = app.listen(PORT, () => {
   console.log(`📬 Consultation emails → ${CONTACT_TO}`);
   console.log(`🌐 Allowed CORS origins: ${allowedOrigins.join(', ')}`);
   if (!createTransporter()) {
-    console.log('⚠️  SMTP not configured — using FormSubmit fallback (unreliable from Node).');
-    console.log('   Set SMTP_HOST, SMTP_USER, SMTP_PASS in backend/.env for real delivery.');
+    console.log('ℹ️  SMTP not configured — contact form uses browser FormSubmit (see frontend).');
   } else {
     console.log('✉️  Email mode: SMTP');
   }

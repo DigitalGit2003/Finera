@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
+// FormSubmit must run in the browser — Cloudflare blocks it from Render/Node servers.
+const CONTACT_EMAIL =
+  import.meta.env.VITE_CONTACT_EMAIL || 'info@fineraglobal.com';
+
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -22,20 +26,38 @@ const ContactSection: React.FC = () => {
     setStatus('');
 
     try {
-      const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
-      const response = await fetch(`${baseUrl}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const subject = `New consultation request from ${formData.firstName} ${formData.lastName}`;
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_EMAIL)}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            name: `${formData.firstName} ${formData.lastName}`,
+            email: formData.email,
+            service: formData.service || 'Not specified',
+            message: formData.message,
+            _subject: subject,
+            _template: 'table',
+            _captcha: 'false',
+          }),
+        }
+      );
 
-      if (response.ok) {
+      const result = await response.json().catch(() => null);
+      const ok =
+        response.ok &&
+        (result?.success === true || result?.success === 'true');
+
+      if (ok) {
         setStatus('success');
         setFormData({ firstName: '', lastName: '', email: '', service: '', message: '' });
         setTimeout(() => setStatus(''), 5000);
       } else {
+        console.error('FormSubmit error:', result);
         setStatus('error');
       }
     } catch (error) {
