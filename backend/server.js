@@ -13,6 +13,7 @@ const app = express();
 const CONTACT_TO = process.env.CONTACT_EMAIL || 'info@fineraglobal.com';
 
 // CORS must be FIRST - before any routes
+// Always include production + local defaults; CORS_ORIGINS env adds more (does not replace).
 const defaultOrigins = [
   'http://localhost:3000',
   'http://localhost:5173',
@@ -21,14 +22,19 @@ const defaultOrigins = [
   'http://127.0.0.1:5173',
   'https://www.fineraglobal.com',
   'https://fineraglobal.com',
-].join(',');
+];
 
-const allowedOrigins = (process.env.CORS_ORIGINS || defaultOrigins)
-  .split(',')
-  .map(o => o.trim())
-  .filter(Boolean);
+const allowedOrigins = [
+  ...new Set([
+    ...defaultOrigins,
+    ...(process.env.CORS_ORIGINS || '')
+      .split(',')
+      .map((o) => o.trim())
+      .filter(Boolean),
+  ]),
+];
 
-app.use(cors({
+const corsOptions = {
   origin: function (origin, callback) {
     // Allow non-browser tools (no Origin) and listed frontends
     if (!origin || allowedOrigins.includes(origin)) {
@@ -43,9 +49,11 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
   exposedHeaders: ['Content-Length', 'X-JSON'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204
-}));
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // ensure preflight never falls through to 404
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -192,6 +200,7 @@ app.get('/api/health', (req, res) => {
     timestamp: new Date().toISOString(),
     mongodb: mongoReady ? 'connected' : 'disconnected',
     email: createTransporter() ? 'smtp' : 'formsubmit-fallback',
+    allowedOrigins,
   });
 });
 
@@ -256,6 +265,7 @@ const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
   console.log(`📬 Consultation emails → ${CONTACT_TO}`);
+  console.log(`🌐 Allowed CORS origins: ${allowedOrigins.join(', ')}`);
   if (!createTransporter()) {
     console.log('⚠️  SMTP not configured — using FormSubmit fallback (unreliable from Node).');
     console.log('   Set SMTP_HOST, SMTP_USER, SMTP_PASS in backend/.env for real delivery.');
