@@ -13,18 +13,31 @@ const app = express();
 const CONTACT_TO = process.env.CONTACT_EMAIL || 'info@fineraglobal.com';
 
 // CORS must be FIRST - before any routes
-const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:3000,http://localhost:5173,http://localhost:5174,http://127.0.0.1:3000,http://127.0.0.1:5173')
+const defaultOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:5173',
+  'https://www.fineraglobal.com',
+  'https://fineraglobal.com',
+].join(',');
+
+const allowedOrigins = (process.env.CORS_ORIGINS || defaultOrigins)
   .split(',')
   .map(o => o.trim())
   .filter(Boolean);
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+    // Allow non-browser tools (no Origin) and listed frontends
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+      return;
     }
+    console.warn(`⚠️  Blocked CORS origin: ${origin}`);
+    // Do not throw — throwing omits CORS headers and looks like a network failure
+    callback(null, false);
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
