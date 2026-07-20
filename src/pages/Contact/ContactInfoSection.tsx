@@ -28,13 +28,13 @@ const ContactInfoSection: React.FC = () => {
                   <div>
                     <h3 className="text-sm font-semibold text-gray-900 mb-1">Office</h3>
                     <a
-                      href="https://maps.app.goo.gl/xrVjQSFbXy4uGxJBA"
+                      href="https://maps.app.goo.gl/o26xu9tMAgqZ7WPF9"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-700 hover:text-blue-600 transition-colors"
                     >
-                      Shop No. 1, Opp Dharmajivan jivan Soc,<br/>
-                      Chikuwadi, Surat, Gujarat, India - 395006
+                      111, 1st Floor, Sky Zone Business Hub,<br/>
+                      Near Shyam Dham Mandir, Surat- 395006
                     </a>
                   </div>
                 </div>

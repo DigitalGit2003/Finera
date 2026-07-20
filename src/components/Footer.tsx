@@ -150,7 +150,7 @@ const Footer: React.FC = () => {
                 </a>
               </div>
               <div className="text-gray-300 leading-relaxed">
-                Shop No. 1, Opp Dharmajivan jivan Soc, Chikuwadi, Surat, Gujarat, India - 395006
+                111, 1st Floor, Sky Zone Business Hub, Near Shyam Dham Mandir, Surat- 395006
               </div>
             </div>
           </div>
